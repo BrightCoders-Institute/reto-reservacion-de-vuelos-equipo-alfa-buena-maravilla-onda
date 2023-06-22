@@ -5,7 +5,7 @@ import {
 
 } from 'react-native';
 import SignUpScreen from './src/screens/SignUpScreen';
-import SingnUpButton from './src/components/SingnUpButton';
+
 
 
 
@@ -15,7 +15,6 @@ function App() {
     <SafeAreaView>
       <StatusBar backgroundColor='#FFFFFF'/>
       <SignUpScreen/>
-      <SingnUpButton/>
     </SafeAreaView>
   );
 }

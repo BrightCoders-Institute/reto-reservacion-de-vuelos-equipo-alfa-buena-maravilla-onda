@@ -7,6 +7,10 @@ const SingnUpButton = ({onPress}) => {
     <TouchableOpacity  style = {styles.button} onPress = {onPress}>
     <Text Text style = {styles.buttonText}> Sing Up </Text>
     </TouchableOpacity>
+    <Text Text style = {styles.OrText}>Or</Text>
+    <TouchableOpacity  style = {styles.button} onPress = {onPress}>
+    <Text Text style = {styles.buttonText}> Sing Up with Google </Text>
+    </TouchableOpacity>
     </View>
     
   );
@@ -18,7 +22,7 @@ const styles = StyleSheet.create ({
     marginTop:30,
     },
     button: {
-     backgroundColor: '#707FF9',
+     backgroundColor: '#5974f5',
      paddingVertical: 10,
      paddingHorizontal: 10,
      width:'90%',
@@ -30,6 +34,9 @@ const styles = StyleSheet.create ({
       fontSize: 17,
       fontWeight: 'bold'
     },
+    OrText: {
+        paddingVertical:20,
+    }
 });
 
 export default SingnUpButton
