@@ -2,15 +2,14 @@ import React from 'react';
 import {
   SafeAreaView,
   StatusBar,
-
 } from 'react-native';
 import SignUpScreen from './src/screens/SignUpScreen';
 
 
 
 
-function App() {
 
+function App() {
   return (
     <SafeAreaView>
       <StatusBar backgroundColor='#FFFFFF'/>
