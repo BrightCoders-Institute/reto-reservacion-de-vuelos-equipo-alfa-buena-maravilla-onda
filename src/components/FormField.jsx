@@ -1,54 +1,59 @@
-import React, {useState} from 'react';
-import { Text, View, TextInput, StyleSheet, Pressable} from 'react-native'
-import Ionicons  from 'react-native-vector-icons/Ionicons'
+import React, { useState } from 'react';
+import { Text, View, TextInput, StyleSheet, Pressable } from 'react-native';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
-const FormField = ({fieldText, typeField, secureTextEntry = false}) =>{
-  const [showPassword, setShowPassword] = useState(secureTextEntry);
-  
+const FormField = ({ fieldText, typeField, secureTextEntry = false, value, onChangeText }) => {
+  const [showPassword, setShowPassword] = useState(false); // La contraseña inicialmente está oculta
 
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
 
-  return(
+  return (
     <View style={styles.container}>
-      <Text style={styles.text} >{fieldText}</Text>
-      <View>
-
-      </View>
+      <Text style={styles.text}>{fieldText}</Text>
       <View style={styles.row}>
         <TextInput 
           style={styles.input}
-          secureTextEntry={!showPassword}
+          secureTextEntry={typeField === 'password' ? !showPassword : secureTextEntry} // Aquí está el cambio. Cuando showPassword es falso, secureTextEntry es verdadero, ocultando la contraseña.
+          value={value} 
+          onChangeText={onChangeText} 
         />
-      {typeField === 'password' ? <Pressable onPress={() => setShowPassword (!showPassword)}>
-        <Ionicons name='eye' color='gray' size={25} style={styles.icon} />
-      </Pressable>: ''}
+        {typeField === 'password' ? (
+          <Pressable onPress={togglePasswordVisibility}>
+            <Ionicons name={showPassword ? 'eye-off' : 'eye'} color="gray" size={25} style={styles.icon} />
+          </Pressable>
+        ) : null}
       </View>
-      {typeField === 'password' ? <Text>Use 8 or more characters with a mix of letters, numbers, and symbols</Text>:''}
+      {typeField === 'password' ? (
+        <Text>Use 8 or more characters with a mix of letters, numbers, and symbols</Text>
+      ) : null}
     </View>
-  )
-}
-
+  );
+};
 const styles = StyleSheet.create({
-  container:{
-    alignSelf:'center',
-    width:'90%',
+  container: {
+    alignSelf: 'center',
+    width: '90%',
   },
-  row:{
-    flexDirection:'row',
-    borderWidth:1,
-    borderColor:'black',
+  row: {
+    flexDirection: 'row',
+    borderWidth: 1,
+    borderColor: 'black',
   },
-  icon:{
-    paddingTop:10,
+  icon: {
+    paddingTop: 10,
   },
-  text:{
-    fontSize:16,
-    marginBottom:5,
-    marginTop:20,
+  text: {
+    fontSize: 16,
+    marginBottom: 5,
+    marginTop: 20,
   },
-  input:{
-    height:50,
+  input: {
+    height: 50,
     padding: 10,
-    width:'90%'
+    width: '90%',
   },
 });
-export default FormField
+
+export default FormField;

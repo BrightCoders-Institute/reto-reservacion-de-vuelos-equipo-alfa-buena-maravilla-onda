@@ -1,33 +1,49 @@
 {
   "project_info": {
-    "project_number": "505024745820",
-    "project_id": "reservacion-de-vuelos-bde2c",
-    "storage_bucket": "reservacion-de-vuelos-bde2c.appspot.com"
+    "project_number": "569311043643",
+    "project_id": "flightsbooking-255da",
+    "storage_bucket": "flightsbooking-255da.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:505024745820:android:07b10f22d5b434a9ae3199",
+        "mobilesdk_app_id": "1:569311043643:android:a48bedefc6756a0e183c1e",
         "android_client_info": {
-          "package_name": "com.reservaciondevuelos"
+          "package_name": "com.flightsbooking"
         }
       },
       "oauth_client": [
         {
-          "client_id": "505024745820-d5lgjc884ha8a15kpgot238nhbofuo5h.apps.googleusercontent.com",
+          "client_id": "569311043643-ght7sn6a9nbjiqfddrmp75bfkhhm44nj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.flightsbooking",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "569311043643-upv08i7q1mg3e0m9hk26eg49t3gt1ntm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.flightsbooking",
+            "certificate_hash": "b1087e170ba37f1863f7934455cb2f769d1af32d"
+          }
+        },
+        {
+          "client_id": "569311043643-h9c0ctlutkqsnr2ticidfl3d08nuafqj.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAEwR1hmELUPrjWpRM8jqOd_wdfKPZwmPo"
+          "current_key": "AIzaSyAyWDXuMABe8MpRnPsKQc8jNdM1jHxngtI"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "505024745820-d5lgjc884ha8a15kpgot238nhbofuo5h.apps.googleusercontent.com",
+              "client_id": "569311043643-fvagiajtvpa2rvo0oupiee7c6ceck1ov.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

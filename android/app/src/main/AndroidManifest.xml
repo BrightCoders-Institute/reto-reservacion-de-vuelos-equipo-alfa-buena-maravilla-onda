@@ -1,5 +1,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<<<<<<< HEAD
   
+=======
+
+>>>>>>> 82da339 (Separate Google Sign-In Logic into a Separate Hook File and Add Co-Designed Modal for Sign-In Stage)
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
