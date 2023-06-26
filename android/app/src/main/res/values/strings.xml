@@ -1,7 +1,3 @@
 <resources>
-<<<<<<< HEAD
-    <string name="app_name">reservaciondevuelos</string>
-=======
     <string name="app_name">FlightsBooking</string>
->>>>>>> 82da339 (Separate Google Sign-In Logic into a Separate Hook File and Add Co-Designed Modal for Sign-In Stage)
 </resources>
