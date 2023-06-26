@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react';
 import {StyleSheet, SafeAreaView, Text, Pressable, View} from 'react-native';
 import CheckBox from '@react-native-community/checkbox';
 import handleSignup from '../hooks/handleSignup';
-import TextAlert from './TextAlert';
 import FormField from './FormField';
 import SignUpButton from './SignUpButton';
 
@@ -16,15 +15,16 @@ const SignUpForm = () => {
   const [isButtonEnabled, setButtonEnabled] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [signUpError, setSignUpError] = useState(null);
 
   const handleSignUp = async () => {
     try {
       setIsLoading(true);
       setShowModal(true);
-      const user = await handleSignup(email, password);
-      if (typeof user !== 'object') {
+      const user = await handleSignup(firstName,email, password);
+      if ( user.hasOwnProperty('typeError')) {
         console.log(user);
-        setTextAlert(!textAlert);
+        setSignUpError(user);
       } else {
         handleSignUpSuccess();
       }
@@ -71,28 +71,31 @@ const SignUpForm = () => {
         typeField="string"
         value={firstName}
         onChangeText={setFirstName}
+        error={signUpError}
       />
       <FormField
         fieldText="Email*"
         typeField="email"
         value={email}
         onChangeText={setEmail}
+        error={signUpError}
       />
 
-      {textAlert === true ? (
+      {/* {textAlert === true ? (
         <TextAlert
           position={'absolute'}
           left={'30%'}
           top={'39%'}
           texto="*Incorrect email and/or password"
         />
-      ) : null}
+      ) : null} */}
       <FormField
         fieldText="Password*"
         secureTextEntry={true}
         typeField="password"
         value={password}
         onChangeText={setPassword}
+        error={signUpError}
       />
 
       <View style={styles.checkBoxContainer}>

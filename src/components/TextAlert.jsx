@@ -1,9 +1,9 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 
-const TextAlert = ({texto, position, left, top}) => {
+const TextAlert = ({texto}) => {
   return (
-    <View style={{position, left, top}}>
+    <View >
       <Text style={styles.textoAlerta}>{texto}</Text>
     </View>
   );

@@ -1,5 +1,6 @@
-import React, {useState} from 'react';
-import {Text, View, TextInput, StyleSheet, Pressable} from 'react-native';
+import React, {useState, useEffect} from 'react';
+import {Text, View, TextInput, StyleSheet, Pressable, Alert} from 'react-native';
+import TextAlert from './TextAlert';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const FormField = ({
@@ -8,9 +9,11 @@ const FormField = ({
   secureTextEntry = false,
   value,
   onChangeText,
+  error,
 }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [hasText, setHasText] = useState(false);
+  const [showError, setShowError] = useState(false);
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
@@ -23,9 +26,24 @@ const FormField = ({
     }
   };
 
+  const checkError = () => {
+    if (error !== null && error.typeError === typeField ){
+      setShowError(true);
+    }
+    else{
+      setShowError(false);
+    }
+  }
+  useEffect(() => {
+    checkError();
+  },[error])
+
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>{fieldText}</Text>
+      <View style={styles.rowText} >
+        <Text style={styles.text}>{fieldText}</Text>
+        {showError ? <TextAlert texto={error.message}/> : null}
+      </View>
       <View
         style={[styles.row, hasText ? styles.rowHasText : styles.rowNoText]}>
         <TextInput
@@ -35,6 +53,7 @@ const FormField = ({
           }
           value={value}
           onChangeText={handleChangeText}
+          onEndEditing={() => setShowError(false)}
         />
         {typeField === 'password' ? (
           <Pressable onPress={togglePasswordVisibility}>
@@ -64,6 +83,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     borderWidth: 2,
   },
+  rowText:{
+    marginBottom: 5,
+    marginTop: 20,
+    flexDirection:'row',
+  },
   rowNoText: {
     borderColor: 'gray',
   },
@@ -75,8 +99,7 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 16,
-    marginBottom: 5,
-    marginTop: 20,
+    marginRight:10,
   },
   input: {
     height: 50,
