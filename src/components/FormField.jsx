@@ -10,27 +10,37 @@ const FormField = ({
   onChangeText,
 }) => {
   const [showPassword, setShowPassword] = useState(false);
+  const [hasText, setHasText] = useState(false);
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
+  };
+  const handleChangeText = text => {
+    onChangeText(text);
+    if (text !== '') {
+      setHasText(true);
+    } else {
+      setHasText(false);
+    }
   };
 
   return (
     <View style={styles.container}>
       <Text style={styles.text}>{fieldText}</Text>
-      <View style={styles.row}>
+      <View
+        style={[styles.row, hasText ? styles.rowHasText : styles.rowNoText]}>
         <TextInput
           style={styles.input}
           secureTextEntry={
             typeField === 'password' ? !showPassword : secureTextEntry
           }
           value={value}
-          onChangeText={onChangeText}
+          onChangeText={handleChangeText}
         />
         {typeField === 'password' ? (
           <Pressable onPress={togglePasswordVisibility}>
             <Ionicons
               name={showPassword ? 'eye-off' : 'eye'}
-              color="gray"
+              color={hasText ? '#5974f5' : 'gray'}
               size={25}
               style={styles.icon}
             />
@@ -52,8 +62,13 @@ const styles = StyleSheet.create({
   },
   row: {
     flexDirection: 'row',
-    borderWidth: 1,
-    borderColor: 'black',
+    borderWidth: 2,
+  },
+  rowNoText: {
+    borderColor: 'gray',
+  },
+  rowHasText: {
+    borderColor: '#5974f5',
   },
   icon: {
     paddingTop: 10,
