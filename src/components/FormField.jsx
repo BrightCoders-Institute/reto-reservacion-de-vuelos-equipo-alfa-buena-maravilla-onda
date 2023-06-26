@@ -3,8 +3,7 @@ import { Text, View, TextInput, StyleSheet, Pressable } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const FormField = ({ fieldText, typeField, secureTextEntry = false, value, onChangeText }) => {
-  const [showPassword, setShowPassword] = useState(false); // La contraseña inicialmente está oculta
-
+  const [showPassword, setShowPassword] = useState(false);
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
@@ -15,7 +14,7 @@ const FormField = ({ fieldText, typeField, secureTextEntry = false, value, onCha
       <View style={styles.row}>
         <TextInput 
           style={styles.input}
-          secureTextEntry={typeField === 'password' ? !showPassword : secureTextEntry} // Aquí está el cambio. Cuando showPassword es falso, secureTextEntry es verdadero, ocultando la contraseña.
+          secureTextEntry={typeField === 'password' ? !showPassword : secureTextEntry} 
           value={value} 
           onChangeText={onChangeText} 
         />
