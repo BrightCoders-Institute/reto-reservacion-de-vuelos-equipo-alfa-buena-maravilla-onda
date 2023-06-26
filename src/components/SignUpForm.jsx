@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { StyleSheet, SafeAreaView, Text, Pressable, View } from 'react-native';
+import React, {useState, useEffect} from 'react';
+import {StyleSheet, SafeAreaView, Text, Pressable, View} from 'react-native';
 import CheckBox from '@react-native-community/checkbox';
 import handleSignup from '../hooks/handleSignup';
 import TextAlert from './TextAlert';
@@ -11,7 +11,7 @@ const SignUpForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [termsChecked, setTermsChecked] = useState(false);
-  const [textAlert,setTextAlert]= useState(false)
+  const [textAlert, setTextAlert] = useState(false);
   const [subscribeChecked, setSubscribeChecked] = useState(false);
   const [isButtonEnabled, setButtonEnabled] = useState(false);
   const [showModal, setShowModal] = useState(false);
@@ -30,10 +30,8 @@ const SignUpForm = () => {
       }
     } catch (error) {
       console.error('Error signing up:', error);
-    } 
+    }
   };
-  
-  
 
   const handleSignUpSuccess = () => {
     setFirstName('');
@@ -81,7 +79,14 @@ const SignUpForm = () => {
         onChangeText={setEmail}
       />
 
-{textAlert === true ? (<TextAlert position={'absolute'} left={'30%'} top={'39%'} texto='*Incorrect email and/or password'/>) : null}
+      {textAlert === true ? (
+        <TextAlert
+          position={'absolute'}
+          left={'30%'}
+          top={'39%'}
+          texto="*Incorrect email and/or password"
+        />
+      ) : null}
       <FormField
         fieldText="Password*"
         secureTextEntry={true}
@@ -99,10 +104,8 @@ const SignUpForm = () => {
           />
           <Text>
             I agree to the
-            <Text style={{ textDecorationLine: 'underline' }}>Terms</Text> and{' '}
-            <Text style={{ textDecorationLine: 'underline' }}>
-              Privacy Policy
-            </Text>
+            <Text style={styles.textUnderline}>Terms</Text> and{' '}
+            <Text style={styles.textUnderline}>Privacy Policy</Text>
           </Text>
         </View>
         <View style={styles.checkBoxText}>
@@ -114,7 +117,11 @@ const SignUpForm = () => {
           <Text>Subscribe for select product updates.</Text>
         </View>
       </View>
-      <SignUpButton onPress={handleSignUp} isEnabled={isButtonEnabled} showModal={showModal} />
+      <SignUpButton
+        onPress={handleSignUp}
+        isEnabled={isButtonEnabled}
+        showModal={showModal}
+      />
       <View style={styles.footerContainer}>
         <Text style={styles.text}>Already have an account? {''}</Text>
         <Pressable>
@@ -154,6 +161,9 @@ const styles = StyleSheet.create({
   checkBoxContainer: {
     marginLeft: 13,
     marginTop: 20,
+  },
+  textUnderline: {
+    textDecorationLine: 'underline',
   },
 });
 

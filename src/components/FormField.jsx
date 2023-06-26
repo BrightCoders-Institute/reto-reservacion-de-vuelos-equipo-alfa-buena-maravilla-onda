@@ -1,8 +1,14 @@
-import React, { useState } from 'react';
-import { Text, View, TextInput, StyleSheet, Pressable } from 'react-native';
+import React, {useState} from 'react';
+import {Text, View, TextInput, StyleSheet, Pressable} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-const FormField = ({ fieldText, typeField, secureTextEntry = false, value, onChangeText }) => {
+const FormField = ({
+  fieldText,
+  typeField,
+  secureTextEntry = false,
+  value,
+  onChangeText,
+}) => {
   const [showPassword, setShowPassword] = useState(false);
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -12,20 +18,29 @@ const FormField = ({ fieldText, typeField, secureTextEntry = false, value, onCha
     <View style={styles.container}>
       <Text style={styles.text}>{fieldText}</Text>
       <View style={styles.row}>
-        <TextInput 
+        <TextInput
           style={styles.input}
-          secureTextEntry={typeField === 'password' ? !showPassword : secureTextEntry} 
-          value={value} 
-          onChangeText={onChangeText} 
+          secureTextEntry={
+            typeField === 'password' ? !showPassword : secureTextEntry
+          }
+          value={value}
+          onChangeText={onChangeText}
         />
         {typeField === 'password' ? (
           <Pressable onPress={togglePasswordVisibility}>
-            <Ionicons name={showPassword ? 'eye-off' : 'eye'} color="gray" size={25} style={styles.icon} />
+            <Ionicons
+              name={showPassword ? 'eye-off' : 'eye'}
+              color="gray"
+              size={25}
+              style={styles.icon}
+            />
           </Pressable>
         ) : null}
       </View>
       {typeField === 'password' ? (
-        <Text>Use 8 or more characters with a mix of letters, numbers, and symbols</Text>
+        <Text>
+          Use 8 or more characters with a mix of letters, numbers, and symbols
+        </Text>
       ) : null}
     </View>
   );

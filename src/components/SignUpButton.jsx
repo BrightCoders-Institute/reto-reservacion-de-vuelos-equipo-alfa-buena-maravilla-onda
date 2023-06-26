@@ -9,7 +9,6 @@ import {
   StatusBar,
   Image,
 } from 'react-native';
-import handleSignup from '../hooks/handleSignup';
 import signInWithGoogle from '../hooks/SignInWithGoogle';
 
 const SignUpButton = ({isEnabled, onPress}) => {
@@ -37,7 +36,7 @@ const SignUpButton = ({isEnabled, onPress}) => {
         <TouchableOpacity
           style={[
             styles.button,
-            {backgroundColor: isEnabled ? '#5974f5' : '#d3d3d3'},
+            isEnabled ? styles.enabledBtn : styles.disabledBtn,
           ]}
           disabled={!isEnabled || isLoading}
           onPress={onPress}>
@@ -52,7 +51,7 @@ const SignUpButton = ({isEnabled, onPress}) => {
         <TouchableOpacity
           style={[
             styles.button,
-            {backgroundColor: isEnabled ? '#5974f5' : '#d3d3d3'},
+            isEnabled ? styles.enabledBtn : styles.disabledBtn,
           ]}
           disabled={!isEnabled || isLoading}
           onPress={handleGoogleSignIn}>
@@ -136,6 +135,12 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
     textAlign: 'center',
+  },
+  enabledBtn: {
+    backgroundColor: '#5974f5',
+  },
+  disabledBtn: {
+    backgroundColor: '#d3d3d3',
   },
 });
 

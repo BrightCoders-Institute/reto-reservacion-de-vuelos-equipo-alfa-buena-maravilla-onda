@@ -2,7 +2,8 @@ import auth from '@react-native-firebase/auth';
 
 const handleSignup = async (email, password) => {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
+  const passwordRegex =
+    /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
 
   if (!emailRegex.test(email)) {
     console.log('Invalid email format');
@@ -15,7 +16,10 @@ const handleSignup = async (email, password) => {
   }
 
   try {
-    const userCredential = await auth().createUserWithEmailAndPassword(email, password);
+    const userCredential = await auth().createUserWithEmailAndPassword(
+      email,
+      password,
+    );
     const user = userCredential.user;
     console.log('User registered successfully:', user);
     return user;

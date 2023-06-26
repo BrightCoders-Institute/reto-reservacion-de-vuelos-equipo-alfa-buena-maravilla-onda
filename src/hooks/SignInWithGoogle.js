@@ -1,16 +1,17 @@
 import auth from '@react-native-firebase/auth';
-import { GoogleSignin } from '@react-native-google-signin/google-signin';
+import {GoogleSignin} from '@react-native-google-signin/google-signin';
 
 GoogleSignin.configure({
-  scopes: ['email', 'profile'], 
-  webClientId: '569311043643-h9c0ctlutkqsnr2ticidfl3d08nuafqj.apps.googleusercontent.com', 
-  offlineAccess: true, 
+  scopes: ['email', 'profile'],
+  webClientId:
+    '569311043643-h9c0ctlutkqsnr2ticidfl3d08nuafqj.apps.googleusercontent.com',
+  offlineAccess: true,
 });
 
 export const signInWithGoogle = async () => {
   try {
-    await GoogleSignin.hasPlayServices({ showPlayServicesUpdateDialog: true });
-    const { idToken } = await GoogleSignin.signIn();
+    await GoogleSignin.hasPlayServices({showPlayServicesUpdateDialog: true});
+    const {idToken} = await GoogleSignin.signIn();
 
     const googleCredential = auth.GoogleAuthProvider.credential(idToken);
 
@@ -19,7 +20,7 @@ export const signInWithGoogle = async () => {
     return userCredential;
   } catch (error) {
     console.error('Error al iniciar sesión:', error);
-    return { error };
+    return {error};
   }
 };
 
