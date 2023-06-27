@@ -1,10 +1,11 @@
 import auth from '@react-native-firebase/auth';
 import {GoogleSignin} from '@react-native-google-signin/google-signin';
+import Config from "react-native-config";
 
 GoogleSignin.configure({
   scopes: ['email', 'profile'],
   webClientId:
-    '569311043643-h9c0ctlutkqsnr2ticidfl3d08nuafqj.apps.googleusercontent.com',
+    Config.WEB_CLIENT_ID,
   offlineAccess: true,
 });
 
