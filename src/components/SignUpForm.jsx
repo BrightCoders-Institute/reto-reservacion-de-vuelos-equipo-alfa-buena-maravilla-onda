@@ -1,17 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, SafeAreaView, Text, Pressable, View } from 'react-native';
 import CheckBox from '@react-native-community/checkbox';
-import handleSignup from '../hooks/handleSignup';
+import handleSignup from '../hooks/HandleSignup';
 import FormField from './FormField';
 import SignUpButton from './SignUpButton';
+import UseFormState from '../hooks/UseFormState';  
 
 const SignUpForm = () => {
-  const [firstName, setFirstName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [termsChecked, setTermsChecked] = useState(false);
-  const [subscribeChecked, setSubscribeChecked] = useState(false);
-  const [isButtonEnabled, setButtonEnabled] = useState(false);
+  const {
+    firstName,
+    setFirstName,
+    email,
+    setEmail,
+    password,
+    setPassword,
+    termsChecked,
+    setTermsChecked,
+    subscribeChecked,
+    setSubscribeChecked,
+    isButtonEnabled,
+  } = UseFormState();
+
   const [isLoading, setIsLoading] = useState(false);
   const [signUpError, setSignUpError] = useState(null);
 
@@ -47,17 +56,6 @@ const SignUpForm = () => {
     setSubscribeChecked(!subscribeChecked);
   };
 
-  const checkButtonEnabled = () => {
-    if (termsChecked && subscribeChecked) {
-      setButtonEnabled(true);
-    } else {
-      setButtonEnabled(false);
-    }
-  };
-
-  useEffect(() => {
-    checkButtonEnabled();
-  }, [termsChecked, subscribeChecked]);
 
   return (
     <SafeAreaView>

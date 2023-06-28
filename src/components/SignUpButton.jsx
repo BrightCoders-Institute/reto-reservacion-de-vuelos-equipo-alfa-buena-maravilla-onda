@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import {
   TouchableOpacity,
   Text,
@@ -12,7 +12,7 @@ import signInWithGoogle from '../hooks/SignInWithGoogle';
 const SignUpButton = ({ isEnabled, onPress }) => {
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleGoogleSignIn = async () => {
+  const handleGoogleSignIn = useCallback(async () => {
     try {
       setIsLoading(true);
       await signInWithGoogle();
@@ -21,7 +21,8 @@ const SignUpButton = ({ isEnabled, onPress }) => {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, []);
+  
 
   return (
     <View style={styles.buttonContainer}>

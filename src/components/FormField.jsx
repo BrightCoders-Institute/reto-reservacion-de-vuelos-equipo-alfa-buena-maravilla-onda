@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Text, View, TextInput, StyleSheet, Pressable } from 'react-native';
 import TextAlert from './TextAlert';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -15,30 +15,23 @@ const FormField = ({
   const [hasText, setHasText] = useState(false);
   const [showError, setShowError] = useState(false);
 
-  const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword);
-  };
-
-  const handleChangeText = (text) => {
+  const togglePasswordVisibility = useCallback(() => {
+    setShowPassword(prevState => !prevState);
+  }, []);
+  
+  const handleChangeText = useCallback((text) => {
     onChangeText(text);
-    if (text !== '') {
-      setHasText(true);
-    } else {
-      setHasText(false);
-    }
-  };
-
-  const checkError = () => {
-    if (error !== null && error.typeError === typeField) {
-      setShowError(true);
-    } else {
-      setShowError(false);
-    }
-  };
-
+    setHasText(text !== '');
+  }, [onChangeText]);
+  
+  const checkError = useCallback(() => {
+    setShowError(error !== null && error.typeError === typeField);
+  }, [error, typeField]);
+  
   useEffect(() => {
     checkError();
-  }, [error]);
+  }, [checkError]);
+  
 
   return (
     <View style={styles.container}>
