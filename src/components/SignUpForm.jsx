@@ -4,7 +4,8 @@ import CheckBox from '@react-native-community/checkbox';
 import handleSignup from '../hooks/HandleSignup';
 import FormField from './FormField';
 import SignUpButton from './SignUpButton';
-import UseFormState from '../hooks/UseFormState';  
+import UseFormState from '../hooks/UseFormState';
+import LoadingModal from './LoadingModal';
 
 const SignUpForm = () => {
   const {
@@ -23,10 +24,14 @@ const SignUpForm = () => {
 
   const [isLoading, setIsLoading] = useState(false);
   const [signUpError, setSignUpError] = useState(null);
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [isSigningIn, setIsSigningIn] = useState(false);
+  const [signInCompleted, setSignInCompleted] = useState(false);
 
   const handleSignUp = async () => {
     try {
-      setIsLoading(true);
+      setIsModalVisible(true);
+      setIsSigningIn(true);
       const user = await handleSignup(firstName, email, password);
       if (user.hasOwnProperty('typeError')) {
         console.log(user);
@@ -34,8 +39,12 @@ const SignUpForm = () => {
       } else {
         handleSignUpSuccess();
       }
+      setIsSigningIn(false);
+      setIsModalVisible(false);
     } catch (error) {
       console.error('Error signing up:', error);
+      setIsSigningIn(false);
+      setIsModalVisible(false);
     }
   };
 
@@ -45,7 +54,7 @@ const SignUpForm = () => {
     setPassword('');
     setTermsChecked(false);
     setSubscribeChecked(false);
-    setIsLoading(false);
+    setSignInCompleted(true);
   };
 
   const handleTermsCheck = () => {
@@ -55,7 +64,6 @@ const SignUpForm = () => {
   const handleSubscribeCheck = () => {
     setSubscribeChecked(!subscribeChecked);
   };
-
 
   return (
     <SafeAreaView>
@@ -107,6 +115,13 @@ const SignUpForm = () => {
         </View>
       </View>
       <SignUpButton onPress={handleSignUp} isEnabled={isButtonEnabled} />
+      <LoadingModal
+  visible={isModalVisible}
+  message="Signing up..."
+  completed={false}
+  isSigningIn={isSigningIn}
+  signInCompleted={signInCompleted}
+/>
       <View style={styles.footerContainer}>
         <Text style={styles.text}>Already have an account? {''}</Text>
         <Pressable>

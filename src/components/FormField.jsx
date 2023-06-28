@@ -18,20 +18,19 @@ const FormField = ({
   const togglePasswordVisibility = useCallback(() => {
     setShowPassword(prevState => !prevState);
   }, []);
-  
+
   const handleChangeText = useCallback((text) => {
     onChangeText(text);
     setHasText(text !== '');
   }, [onChangeText]);
-  
+
   const checkError = useCallback(() => {
     setShowError(error !== null && error.typeError === typeField);
   }, [error, typeField]);
-  
+
   useEffect(() => {
     checkError();
   }, [checkError]);
-  
 
   return (
     <View style={styles.container}>

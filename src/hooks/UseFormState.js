@@ -7,6 +7,7 @@ const UseFormState = () => {
   const [termsChecked, setTermsChecked] = useState(false);
   const [subscribeChecked, setSubscribeChecked] = useState(false);
   const [isButtonEnabled, setButtonEnabled] = useState(false);
+  
 
   const checkButtonEnabled = () => {
     if (termsChecked && subscribeChecked) {

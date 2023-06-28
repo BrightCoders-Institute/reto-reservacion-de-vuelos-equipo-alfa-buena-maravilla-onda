@@ -8,21 +8,28 @@ import {
   Image,
 } from 'react-native';
 import signInWithGoogle from '../hooks/SignInWithGoogle';
+import LoadingModal from './LoadingModal';
 
 const SignUpButton = ({ isEnabled, onPress }) => {
   const [isLoading, setIsLoading] = useState(false);
+  const [modalVisible, setModalVisible] = useState(false);
+  const [signInCompleted, setSignInCompleted] = useState(false);
+
 
   const handleGoogleSignIn = useCallback(async () => {
     try {
+      setModalVisible(true);
       setIsLoading(true);
       await signInWithGoogle();
+      setIsLoading(false);
+      setSignInCompleted(true);
+      setModalVisible(false);
     } catch (error) {
       console.error('Error al iniciar sesión con Google:', error);
-    } finally {
       setIsLoading(false);
+      setModalVisible(false);
     }
   }, []);
-  
 
   return (
     <View style={styles.buttonContainer}>
@@ -60,6 +67,8 @@ const SignUpButton = ({ isEnabled, onPress }) => {
           <Text style={styles.buttonText}>Sign in with Google</Text>
         </View>
       </TouchableOpacity>
+
+      <LoadingModal visible={modalVisible} completed={false} />
     </View>
   );
 };

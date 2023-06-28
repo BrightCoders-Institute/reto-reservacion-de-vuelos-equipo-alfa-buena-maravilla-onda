@@ -4,6 +4,8 @@
  *
  * @format
  */
+const { getDefaultConfig } = require('metro-config');
+module.exports = getDefaultConfig(__dirname);
 const fs = require('fs');
 const path = require('path');
 const exclusionList = require('metro-config/src/defaults/exclusionList');
