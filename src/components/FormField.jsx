@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from 'react';
-import {Text, View, TextInput, StyleSheet, Pressable, Alert} from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { Text, View, TextInput, StyleSheet, Pressable } from 'react-native';
 import TextAlert from './TextAlert';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
@@ -14,10 +14,12 @@ const FormField = ({
   const [showPassword, setShowPassword] = useState(false);
   const [hasText, setHasText] = useState(false);
   const [showError, setShowError] = useState(false);
+
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
-  const handleChangeText = text => {
+
+  const handleChangeText = (text) => {
     onChangeText(text);
     if (text !== '') {
       setHasText(true);
@@ -27,30 +29,27 @@ const FormField = ({
   };
 
   const checkError = () => {
-    if (error !== null && error.typeError === typeField ){
+    if (error !== null && error.typeError === typeField) {
       setShowError(true);
-    }
-    else{
+    } else {
       setShowError(false);
     }
-  }
+  };
+
   useEffect(() => {
     checkError();
-  },[error])
+  }, [error]);
 
   return (
     <View style={styles.container}>
-      <View style={styles.rowText} >
+      <View style={styles.rowText}>
         <Text style={styles.text}>{fieldText}</Text>
-        {showError ? <TextAlert texto={error.message}/> : null}
+        {showError ? <TextAlert texto={error.message} /> : null}
       </View>
-      <View
-        style={[styles.row, hasText ? styles.rowHasText : styles.rowNoText]}>
+      <View style={[styles.row, hasText ? styles.rowHasText : styles.rowNoText]}>
         <TextInput
           style={styles.input}
-          secureTextEntry={
-            typeField === 'password' ? !showPassword : secureTextEntry
-          }
+          secureTextEntry={typeField === 'password' ? !showPassword : secureTextEntry}
           value={value}
           onChangeText={handleChangeText}
           onEndEditing={() => setShowError(false)}
@@ -74,6 +73,7 @@ const FormField = ({
     </View>
   );
 };
+
 const styles = StyleSheet.create({
   container: {
     alignSelf: 'center',
@@ -83,10 +83,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     borderWidth: 2,
   },
-  rowText:{
+  rowText: {
     marginBottom: 5,
     marginTop: 20,
-    flexDirection:'row',
+    flexDirection: 'row',
   },
   rowNoText: {
     borderColor: 'gray',
@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 16,
-    marginRight:10,
+    marginRight: 10,
   },
   input: {
     height: 50,
