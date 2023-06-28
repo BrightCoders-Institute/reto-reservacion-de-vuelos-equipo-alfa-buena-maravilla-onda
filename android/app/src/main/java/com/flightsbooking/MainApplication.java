@@ -1,4 +1,4 @@
-package com.reservaciondevuelos;
+package com.flightsbooking;
 
 import android.app.Application;
 import com.facebook.react.PackageList;
