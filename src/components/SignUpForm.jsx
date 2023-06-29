@@ -91,6 +91,9 @@ const SignUpForm = () => {
         onChangeText={setPassword}
         error={signUpError}
       />
+      <Text style={styles.textPass}>
+        Use 8 or more characters with a mix of letters, numbers, and symbols
+      </Text>
 
       <View style={styles.checkBoxContainer}>
         <View style={styles.checkBoxText}>
@@ -114,7 +117,8 @@ const SignUpForm = () => {
           <Text>Subscribe for select product updates.</Text>
         </View>
       </View>
-      <SignUpButton onPress={handleSignUp} isEnabled={isButtonEnabled} />
+      <SignUpButton onPress={handleSignUp} isEnabled={isButtonEnabled}   signUpButtonText="Sign Up"
+  googleSignInButtonText="Sign in with Google" />
       <LoadingModal
   visible={isModalVisible}
   message="Signing up..."
@@ -165,6 +169,9 @@ const styles = StyleSheet.create({
   textUnderline: {
     textDecorationLine: 'underline',
   },
+  textPass:{
+    marginHorizontal:25,
+  }
 });
 
 export default SignUpForm;
