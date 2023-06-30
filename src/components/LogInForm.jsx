@@ -10,10 +10,6 @@ const LogInForm = () => {
     setEmail,
     password,
     setPassword,
-    termsChecked,
-    setTermsChecked,
-    subscribeChecked,
-    setSubscribeChecked,
     isButtonEnabled,
   } = UseFormState();
 
@@ -38,7 +34,7 @@ const LogInForm = () => {
 
       <SignUpButton
         onPress={null}
-        isEnabled={isButtonEnabled}
+        isEnabled={true}
         signUpButtonText="Log In"
         googleSignInButtonText="Log in with Google"
       />

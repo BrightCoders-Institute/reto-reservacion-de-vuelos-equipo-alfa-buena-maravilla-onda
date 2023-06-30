@@ -66,7 +66,7 @@ const SignUpForm = () => {
   };
 
   return (
-    <SafeAreaView>
+    <SafeAreaView >
       <Text style={styles.title}>Sign Up</Text>
       <FormField
         fieldText="First name*"
