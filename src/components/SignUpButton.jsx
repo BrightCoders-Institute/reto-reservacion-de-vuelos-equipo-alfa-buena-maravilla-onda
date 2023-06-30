@@ -10,7 +10,7 @@ import {
 import signInWithGoogle from '../hooks/SignInWithGoogle';
 import LoadingModal from './LoadingModal';
 
-const SignUpButton = ({ isEnabled, onPress }) => {
+const SignUpButton = ({ isEnabled, onPress,  signUpButtonText, googleSignInButtonText }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
   const [signInCompleted, setSignInCompleted] = useState(false);
@@ -44,7 +44,7 @@ const SignUpButton = ({ isEnabled, onPress }) => {
         {isLoading ? (
           <ActivityIndicator size="small" color="#fbfbfc" animating={true} />
         ) : (
-          <Text style={styles.buttonText}>Sign Up</Text>
+          <Text style={styles.buttonText}>{signUpButtonText}</Text>
         )}
       </TouchableOpacity>
 
@@ -64,7 +64,7 @@ const SignUpButton = ({ isEnabled, onPress }) => {
             }}
             style={styles.googleLogo}
           />
-          <Text style={styles.buttonText}>Sign in with Google</Text>
+          <Text style={styles.buttonText}>{googleSignInButtonText}</Text>
         </View>
       </TouchableOpacity>
 

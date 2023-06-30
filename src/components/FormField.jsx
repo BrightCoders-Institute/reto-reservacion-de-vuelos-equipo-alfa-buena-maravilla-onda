@@ -57,11 +57,6 @@ const FormField = ({
           </Pressable>
         ) : null}
       </View>
-      {typeField === 'password' ? (
-        <Text>
-          Use 8 or more characters with a mix of letters, numbers, and symbols
-        </Text>
-      ) : null}
     </View>
   );
 };
@@ -74,6 +69,8 @@ const styles = StyleSheet.create({
   row: {
     flexDirection: 'row',
     borderWidth: 2,
+    borderRadius: 15,
+    backgroundColor:'rgba(255,255,255,0.5)'
   },
   rowText: {
     marginBottom: 5,
@@ -92,6 +89,8 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 16,
     marginRight: 10,
+    fontWeight:'600',
+    textTransform:'uppercase'
   },
   input: {
     height: 50,

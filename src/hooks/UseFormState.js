@@ -33,7 +33,9 @@ const UseFormState = () => {
     subscribeChecked,
     setSubscribeChecked,
     isButtonEnabled,
+    setButtonEnabled,
   };
+  
 };
 
 export default UseFormState;
