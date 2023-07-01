@@ -1,13 +1,13 @@
+import 'react-native-gesture-handler';
 import React from 'react';
-import {SafeAreaView, StatusBar} from 'react-native';
-import SignUpScreen from './src/screens/SignUpScreen';
+import { NavigationContainer } from '@react-navigation/native';
+import AppNavigation from './src/Navigation/AppNavigation';
 
-function App() {
+function App({ navigation }) {
   return (
-    <SafeAreaView>
-      <StatusBar backgroundColor="#FFFFFF" />
-      <SignUpScreen />
-    </SafeAreaView>
+    <NavigationContainer>
+      <AppNavigation />
+    </NavigationContainer> 
   );
 }
 

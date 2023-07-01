@@ -2,15 +2,17 @@ import React, { useState, useCallback } from 'react';
 import {
   TouchableOpacity,
   Text,
-  StyleSheet,
   View,
   ActivityIndicator,
   Image,
 } from 'react-native';
 import signInWithGoogle from '../hooks/SignInWithGoogle';
 import LoadingModal from './LoadingModal';
+import SignUpButtonStyles from '../styles/SignUpButtonStyles';
+import { useNavigation } from '@react-navigation/native';
 
 const SignUpButton = ({ isEnabled, onPress,  signUpButtonText, googleSignInButtonText }) => {
+  const navigation = useNavigation();
   const [isLoading, setIsLoading] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
   const [signInCompleted, setSignInCompleted] = useState(false);
@@ -24,6 +26,7 @@ const SignUpButton = ({ isEnabled, onPress,  signUpButtonText, googleSignInButto
       setIsLoading(false);
       setSignInCompleted(true);
       setModalVisible(false);
+      navigation.replace('Home');
     } catch (error) {
       console.error('Error al iniciar sesión con Google:', error);
       setIsLoading(false);
@@ -32,11 +35,11 @@ const SignUpButton = ({ isEnabled, onPress,  signUpButtonText, googleSignInButto
   }, []);
 
   return (
-    <View style={styles.buttonContainer}>
+    <View style={SignUpButtonStyles.buttonContainer}>
       <TouchableOpacity
         style={[
-          styles.button,
-          isEnabled ? styles.enabledBtn : styles.disabledBtn,
+          SignUpButtonStyles.button,
+          isEnabled ? SignUpButtonStyles.enabledBtn : SignUpButtonStyles.disabledBtn,
         ]}
         disabled={!isEnabled || isLoading}
         onPress={onPress}
@@ -44,27 +47,27 @@ const SignUpButton = ({ isEnabled, onPress,  signUpButtonText, googleSignInButto
         {isLoading ? (
           <ActivityIndicator size="small" color="#fbfbfc" animating={true} />
         ) : (
-          <Text style={styles.buttonText}>{signUpButtonText}</Text>
+          <Text style={SignUpButtonStyles.buttonText}>{signUpButtonText}</Text>
         )}
       </TouchableOpacity>
 
-      <Text style={styles.OrText}>Or</Text>
+      <Text style={SignUpButtonStyles.OrText}>Or</Text>
       <TouchableOpacity
         style={[
-          styles.button,
-          isEnabled ? styles.enabledBtn : styles.disabledBtn,
+          SignUpButtonStyles.button,
+          isEnabled ? SignUpButtonStyles.enabledBtn : SignUpButtonStyles.disabledBtn,
         ]}
         disabled={!isEnabled || isLoading}
         onPress={handleGoogleSignIn}
       >
-        <View style={styles.buttonContent}>
+        <View style={SignUpButtonStyles.buttonContent}>
           <Image
             source={{
               uri: 'https://www.salesforceben.com/wp-content/uploads/2021/03/google-logo-icon-PNG-Transparent-Background.png',
             }}
-            style={styles.googleLogo}
+            style={SignUpButtonStyles.googleLogo}
           />
-          <Text style={styles.buttonText}>{googleSignInButtonText}</Text>
+          <Text style={SignUpButtonStyles.buttonText}>{googleSignInButtonText}</Text>
         </View>
       </TouchableOpacity>
 
@@ -73,43 +76,6 @@ const SignUpButton = ({ isEnabled, onPress,  signUpButtonText, googleSignInButto
   );
 };
 
-const styles = StyleSheet.create({
-  buttonContainer: {
-    alignItems: 'center',
-    marginTop: 30,
-  },
-  button: {
-    backgroundColor: '#5974f5',
-    paddingVertical: 10,
-    paddingHorizontal: 10,
-    width: '90%',
-    borderRadius: 8,
-  },
-  enabledBtn: {
-    backgroundColor: '#5974f5',
-  },
-  disabledBtn: {
-    backgroundColor: '#9e9e9e',
-  },
-  buttonText: {
-    color: '#fbfbfc',
-    textAlign: 'center',
-    fontSize: 17,
-    fontWeight: 'bold',
-  },
-  OrText: {
-    paddingVertical: 20,
-  },
-  buttonContent: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  googleLogo: {
-    width: 24,
-    height: 24,
-    marginRight: 10,
-  },
-});
+
 
 export default SignUpButton;

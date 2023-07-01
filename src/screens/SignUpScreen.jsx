@@ -1,17 +1,14 @@
-import {View, StyleSheet} from 'react-native';
+import {View} from 'react-native';
 import React from 'react';
 import SignUpForm from '../components/SignUpForm';
+import SignUpScreenStyles from '../styles/SignUpScreenStyles';
 
 const SignUpScreen = () => {
   return (
-    <View  style={styles.container} >
+    <View  style={SignUpScreenStyles.container} >
       <SignUpForm />
     </View>
   );
 };
-const styles = StyleSheet.create({
-  container: {
-    marginTop: 15,
-  },
-});
+
 export default SignUpScreen;

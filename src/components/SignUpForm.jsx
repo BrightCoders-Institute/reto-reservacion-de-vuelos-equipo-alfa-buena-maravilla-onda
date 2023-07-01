@@ -1,13 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import { StyleSheet, SafeAreaView, Text, Pressable, View } from 'react-native';
+import React, { useState} from 'react';
+import {SafeAreaView, Text, Pressable, View } from 'react-native';
 import CheckBox from '@react-native-community/checkbox';
 import handleSignup from '../hooks/HandleSignup';
 import FormField from './FormField';
 import SignUpButton from './SignUpButton';
 import UseFormState from '../hooks/UseFormState';
 import LoadingModal from './LoadingModal';
+import SignUpLoginFormStyles from '../styles/SignUpLoginFormStyles';
+import { useNavigation } from '@react-navigation/native';
 
 const SignUpForm = () => {
+  const navigation = useNavigation();
   const {
     firstName,
     setFirstName,
@@ -55,6 +58,7 @@ const SignUpForm = () => {
     setTermsChecked(false);
     setSubscribeChecked(false);
     setSignInCompleted(true);
+    navigation.replace('Home')
   };
 
   const handleTermsCheck = () => {
@@ -67,7 +71,7 @@ const SignUpForm = () => {
 
   return (
     <SafeAreaView >
-      <Text style={styles.title}>Sign Up</Text>
+      <Text style={SignUpLoginFormStyles.title}>Sign Up</Text>
       <FormField
         fieldText="First name*"
         typeField="string"
@@ -91,12 +95,12 @@ const SignUpForm = () => {
         onChangeText={setPassword}
         error={signUpError}
       />
-      <Text style={styles.textPass}>
+      <Text style={SignUpLoginFormStyles.textPass}>
         Use 8 or more characters with a mix of letters, numbers, and symbols
       </Text>
 
-      <View style={styles.checkBoxContainer}>
-        <View style={styles.checkBoxText}>
+      <View style={SignUpLoginFormStyles.checkBoxContainer}>
+        <View style={SignUpLoginFormStyles.checkBoxText}>
           <CheckBox
             disabled={false}
             value={termsChecked}
@@ -104,11 +108,11 @@ const SignUpForm = () => {
           />
           <Text>
             I agree to the
-            <Text style={styles.textUnderline}>Terms</Text> and{' '}
-            <Text style={styles.textUnderline}>Privacy Policy</Text>
+            <Text style={SignUpLoginFormStyles.textUnderline}>Terms</Text> and{' '}
+            <Text style={SignUpLoginFormStyles.textUnderline}>Privacy Policy</Text>
           </Text>
         </View>
-        <View style={styles.checkBoxText}>
+        <View style={SignUpLoginFormStyles.checkBoxText}>
           <CheckBox
             disabled={false}
             value={subscribeChecked}
@@ -126,52 +130,16 @@ const SignUpForm = () => {
   isSigningIn={isSigningIn}
   signInCompleted={signInCompleted}
 />
-      <View style={styles.footerContainer}>
-        <Text style={styles.text}>Already have an account? {''}</Text>
-        <Pressable>
-          <Text style={styles.logInText}>Log In</Text>
+      <View style={SignUpLoginFormStyles.footerContainer}>
+        <Text style={SignUpLoginFormStyles.text}>Already have an account? {''}</Text>
+        <Pressable onPress={() => navigation.push('LogIn')}>
+          <Text style={SignUpLoginFormStyles.singInText}>Log In</Text>
         </Pressable>
       </View>
     </SafeAreaView>
   );
 };
 
-const styles = StyleSheet.create({
-  title: {
-    color: '#5974f5',
-    marginTop: 40,
-    marginLeft: 20,
-    fontWeight: '900',
-    fontSize: 25,
-  },
-  text: {
-    fontSize: 20,
-  },
-  logInText: {
-    color: '#707FF9',
-    textDecorationLine: 'underline',
-    fontSize: 20,
-  },
-  footerContainer: {
-    marginTop: 50,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  checkBoxText: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  checkBoxContainer: {
-    marginLeft: 13,
-    marginTop: 20,
-  },
-  textUnderline: {
-    textDecorationLine: 'underline',
-  },
-  textPass:{
-    marginHorizontal:25,
-  }
-});
+
 
 export default SignUpForm;
