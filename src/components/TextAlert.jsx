@@ -1,18 +1,15 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text} from 'react-native';
+import TextAlertStyles from '../styles/TextAlertStyles'
 
 const TextAlert = ({ texto }) => {
   return (
     <View>
-      <Text style={styles.textoAlerta}>{texto}</Text>
+      <Text style={TextAlertStyles.textoAlerta}>{texto}</Text>
     </View>
   );
 };
 
-const styles = StyleSheet.create({
-  textoAlerta: {
-    color: 'red',
-  },
-});
+
 
 export default TextAlert;

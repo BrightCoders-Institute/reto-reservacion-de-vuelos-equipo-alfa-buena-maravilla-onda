@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { Text, View, TextInput, StyleSheet, Pressable } from 'react-native';
+import { Text, View, TextInput, Pressable } from 'react-native';
 import TextAlert from './TextAlert';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-
+import FormFieldStyles from '../styles/FormFieldStyles';
 const FormField = ({
   fieldText,
   typeField,
@@ -33,14 +33,14 @@ const FormField = ({
   }, [checkError]);
 
   return (
-    <View style={styles.container}>
-      <View style={styles.rowText}>
-        <Text style={styles.text}>{fieldText}</Text>
+    <View style={FormFieldStyles.container}>
+      <View style={FormFieldStyles.rowText}>
+        <Text style={FormFieldStyles.text}>{fieldText}</Text>
         {showError ? <TextAlert texto={error.message} /> : null}
       </View>
-      <View style={[styles.row, hasText ? styles.rowHasText : styles.rowNoText]}>
+      <View style={[FormFieldStyles.row, hasText ? FormFieldStyles.rowHasText : FormFieldStyles.rowNoText]}>
         <TextInput
-          style={styles.input}
+          style={FormFieldStyles.input}
           secureTextEntry={typeField === 'password' ? !showPassword : secureTextEntry}
           value={value}
           onChangeText={handleChangeText}
@@ -52,7 +52,7 @@ const FormField = ({
               name={showPassword ? 'eye-off' : 'eye'}
               color={hasText ? '#5974f5' : 'gray'}
               size={25}
-              style={styles.icon}
+              style={FormFieldStyles.icon}
             />
           </Pressable>
         ) : null}
@@ -61,42 +61,6 @@ const FormField = ({
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    alignSelf: 'center',
-    width: '90%',
-  },
-  row: {
-    flexDirection: 'row',
-    borderWidth: 2,
-    borderRadius: 15,
-    backgroundColor:'rgba(255,255,255,0.5)'
-  },
-  rowText: {
-    marginBottom: 5,
-    marginTop: 20,
-    flexDirection: 'row',
-  },
-  rowNoText: {
-    borderColor: 'gray',
-  },
-  rowHasText: {
-    borderColor: '#5974f5',
-  },
-  icon: {
-    paddingTop: 10,
-  },
-  text: {
-    fontSize: 16,
-    marginRight: 10,
-    fontWeight:'600',
-    textTransform:'uppercase'
-  },
-  input: {
-    height: 50,
-    padding: 10,
-    width: '90%',
-  },
-});
+
 
 export default FormField;
