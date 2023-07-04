@@ -1,6 +1,10 @@
 import { StyleSheet } from 'react-native';
 
 const HomeScreenStyles = StyleSheet.create({
+  screen: {
+    backgroundColor: '#ffffff',
+    flex:1,
+  },
   container:{
     alignSelf:'center',
     width:'95%',
@@ -18,7 +22,7 @@ const HomeScreenStyles = StyleSheet.create({
   },
   textLogOut:{
     color:'#fbfbfc',
-    marginLeft:10,
+    marginLeft:9,
       fontWeight:'900',
       fontSize:20,
   },
@@ -27,6 +31,13 @@ const HomeScreenStyles = StyleSheet.create({
     fontWeight:'900',
     fontSize:20,
     marginLeft:5,
+  },
+  title: {
+    color: '#5974f5',
+    marginTop: 10,
+    marginLeft: 15,
+    fontWeight: '900',
+    fontSize: 35,
   },
 
 })
