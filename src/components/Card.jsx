@@ -1,29 +1,34 @@
 import React from 'react';
 import { View,Text,StyleSheet } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-//airplane-sharp
-//5974f5
-const Card = () => {
+
+
+//date
+//destinationCity
+//destinationCountry
+//originCity
+//originCountry
+//passengers
+const Card = ({date, destinationCity, destinationCountry, originCity, originCountry, passengers}) => {
   return (
     <View> 
         <View style={styles.containerInfoCard}>
             <View style={styles.infOne}>
-                <Text style={styles.ciudad}>BEG</Text>
-                <Text style={styles.pais}>Serbia</Text>   
-                <Text style={styles.infoAdd}>September 3, 2020</Text> 
+                <Text style={styles.ciudad}>{originCity}</Text>
+                <Text style={styles.pais}>{originCountry}</Text>   
+                <Text style={styles.infoAdd}>{date}</Text> 
             </View>
             <View style={{width:'18%',marginHorizontal:10,marginTop:10,alignItems:'center'}}>
             <Ionicons name='airplane-sharp' size={32} color='#5974f5'/>
             </View>
             <View style={styles.infTwo}>
-                <Text style={styles.ciudad} >AMS</Text>
-                <Text style={styles.pais} >Netherlands</Text> 
-                <Text style={styles.infoAdd}>2 passengers</Text>
+                <Text style={styles.ciudad} >{destinationCity}</Text>
+                <Text style={styles.pais} >{destinationCountry}</Text> 
+                <Text style={styles.infoAdd}> {passengers} passengers</Text>
             </View>
         </View>
         <View style={styles.linea1}></View>
     </View>
-    
   )
 }
 
@@ -33,11 +38,14 @@ const styles = StyleSheet.create({
     },
     containerInfoCard:{
         backgroundColor:'#FFF',
-        width:'100%',
+        width:'90%',
         height:120,
         flexDirection:'row',
+        alignSelf:'center',
         justifyContent:'space-between',
         marginTop:8,
+        borderBottomColor:'gray',
+        borderBottomWidth:2
     },
     infOne:{
         width:'40%',
@@ -66,15 +74,14 @@ const styles = StyleSheet.create({
       top: 65,
       borderTopWidth:1,
       borderColor:'#bcbcbc',
-      width:'95%',
+      width:'90%',
     },
     pais:{ 
         color:'#bcbcbc',
         paddingVertical:6,
         fontWeight:'light',
         marginBottom:10,
-    }
-    
+    }, 
 })
 
 export default Card;

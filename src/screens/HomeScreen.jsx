@@ -8,12 +8,13 @@ import handleLogOut from '../hooks/HandleLogOut';
 import OnAuthStateChanged from '../hooks/OnAuthStateChanged';
 import HomeScreenStyles from '../styles/HomeScreenStyles';
 import {useNavigation} from '@react-navigation/native';
-import Card from '../components/Card';
+import FlightList from '../components/FlightList';
 import AddButton from '../components/AddButton';
+
 
 const HomeScreen = () => {
   const user = OnAuthStateChanged();
-  const navigation = useNavigation();
+  const navigation = useNavigation();  
 
   const handleOnLogOut = async () => {
     console.log('handleOnLogOut executed');
@@ -38,12 +39,7 @@ const HomeScreen = () => {
         </TouchableOpacity>
       </View>
       <Text style={HomeScreenStyles.title}>My flights</Text>
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
+        <FlightList />
       <AddButton />
     </View>
   );
