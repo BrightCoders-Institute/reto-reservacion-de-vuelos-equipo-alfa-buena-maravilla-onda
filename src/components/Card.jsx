@@ -2,13 +2,6 @@ import React from 'react';
 import { View,Text,StyleSheet } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-
-//date
-//destinationCity
-//destinationCountry
-//originCity
-//originCountry
-//passengers
 const Card = ({date, destinationCity, destinationCountry, originCity, originCountry, passengers}) => {
   return (
     <View> 
