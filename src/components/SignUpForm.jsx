@@ -37,7 +37,6 @@ const SignUpForm = () => {
       setIsSigningIn(true);
       const user = await handleSignup(firstName, email, password);
       if (user.hasOwnProperty('typeError')) {
-        console.log(user);
         setSignUpError(user);
       } else {
         handleSignUpSuccess();
@@ -45,7 +44,7 @@ const SignUpForm = () => {
       setIsSigningIn(false);
       setIsModalVisible(false);
     } catch (error) {
-      console.error('Error signing up:', error);
+      alert('Error signing up:', error);
       setIsSigningIn(false);
       setIsModalVisible(false);
     }

@@ -12,10 +12,14 @@ function OnAuthStateChanged() {
 
   const onAuthStateChanged = user => {
     setUser(user);
-    if (initializing) setInitializing(false);
+    if (initializing) {
+      setInitializing(false);
+    }
   };
 
-  if (initializing) return null;
+  if (initializing) {
+    return null;
+  }
   if (!user) {
     return 'No hay usuario';
   }

@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import CardStyles from '../styles/CardStyles';
 
@@ -19,13 +19,7 @@ const Card = ({
           <Text style={CardStyles.pais}>{originCountry}</Text>
           <Text style={CardStyles.infoAdd}>{date}</Text>
         </View>
-        <View
-          style={{
-            width: '18%',
-            marginHorizontal: 10,
-            marginTop: 10,
-            alignItems: 'center',
-          }}>
+        <View style={CardStyles.iconContainerStyle}>
           <Ionicons name="airplane-sharp" size={32} color="#5974f5" />
         </View>
         <View style={CardStyles.infTwo}>
@@ -34,7 +28,7 @@ const Card = ({
           <Text style={CardStyles.infoAdd}> {passengers} passengers</Text>
         </View>
       </View>
-      <View style={CardStyles.linea1}></View>
+      <View style={CardStyles.linea1} />
     </View>
   );
 };

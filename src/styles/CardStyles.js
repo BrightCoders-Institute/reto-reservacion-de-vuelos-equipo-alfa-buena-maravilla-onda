@@ -47,7 +47,13 @@ const CardStyles = StyleSheet.create({
     paddingVertical: 6,
     fontWeight: 'normal',
     marginBottom: 10,
-  },  
+  },
+  iconContainerStyle: {
+    width: '18%',
+    marginHorizontal: 10,
+    marginTop: 10,
+    alignItems: 'center',
+  },
 });
 
 export default CardStyles;
