@@ -1,5 +1,5 @@
-import React, { useState} from 'react';
-import {SafeAreaView, Text, Pressable, View } from 'react-native';
+import React, {useState} from 'react';
+import {SafeAreaView, Text, Pressable, View} from 'react-native';
 import CheckBox from '@react-native-community/checkbox';
 import handleSignup from '../hooks/HandleSignup';
 import FormField from './FormField';
@@ -7,7 +7,7 @@ import SignUpButton from './SignUpButton';
 import UseFormState from '../hooks/UseFormState';
 import LoadingModal from './LoadingModal';
 import SignUpLoginFormStyles from '../styles/SignUpLoginFormStyles';
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 
 const SignUpForm = () => {
   const navigation = useNavigation();
@@ -37,7 +37,6 @@ const SignUpForm = () => {
       setIsSigningIn(true);
       const user = await handleSignup(firstName, email, password);
       if (user.hasOwnProperty('typeError')) {
-        console.log(user);
         setSignUpError(user);
       } else {
         handleSignUpSuccess();
@@ -45,7 +44,7 @@ const SignUpForm = () => {
       setIsSigningIn(false);
       setIsModalVisible(false);
     } catch (error) {
-      console.error('Error signing up:', error);
+      alert('Error signing up:', error);
       setIsSigningIn(false);
       setIsModalVisible(false);
     }
@@ -58,7 +57,7 @@ const SignUpForm = () => {
     setTermsChecked(false);
     setSubscribeChecked(false);
     setSignInCompleted(true);
-    navigation.replace('Home')
+    navigation.replace('Home');
   };
 
   const handleTermsCheck = () => {
@@ -70,7 +69,7 @@ const SignUpForm = () => {
   };
 
   return (
-    <SafeAreaView >
+    <SafeAreaView>
       <Text style={SignUpLoginFormStyles.title}>Sign Up</Text>
       <FormField
         fieldText="First name*"
@@ -108,8 +107,12 @@ const SignUpForm = () => {
           />
           <Text>
             I agree to the
-            <Text style={SignUpLoginFormStyles.textUnderline}>Terms</Text> and{' '}
-            <Text style={SignUpLoginFormStyles.textUnderline}>Privacy Policy</Text>
+            <Text style={SignUpLoginFormStyles.textUnderline}>
+              Terms
+            </Text> and{' '}
+            <Text style={SignUpLoginFormStyles.textUnderline}>
+              Privacy Policy
+            </Text>
           </Text>
         </View>
         <View style={SignUpLoginFormStyles.checkBoxText}>
@@ -121,17 +124,23 @@ const SignUpForm = () => {
           <Text>Subscribe for select product updates.</Text>
         </View>
       </View>
-      <SignUpButton onPress={handleSignUp} isEnabled={isButtonEnabled}   signUpButtonText="Sign Up"
-  googleSignInButtonText="Sign in with Google" />
+      <SignUpButton
+        onPress={handleSignUp}
+        isEnabled={isButtonEnabled}
+        signUpButtonText="Sign Up"
+        googleSignInButtonText="Sign in with Google"
+      />
       <LoadingModal
-  visible={isModalVisible}
-  message="Signing up..."
-  completed={false}
-  isSigningIn={isSigningIn}
-  signInCompleted={signInCompleted}
-/>
+        visible={isModalVisible}
+        message="Signing up..."
+        completed={false}
+        isSigningIn={isSigningIn}
+        signInCompleted={signInCompleted}
+      />
       <View style={SignUpLoginFormStyles.footerContainer}>
-        <Text style={SignUpLoginFormStyles.text}>Already have an account? {''}</Text>
+        <Text style={SignUpLoginFormStyles.text}>
+          Already have an account? {''}
+        </Text>
         <Pressable onPress={() => navigation.push('LogIn')}>
           <Text style={SignUpLoginFormStyles.singInText}>Log In</Text>
         </Pressable>
@@ -139,7 +148,5 @@ const SignUpForm = () => {
     </SafeAreaView>
   );
 };
-
-
 
 export default SignUpForm;

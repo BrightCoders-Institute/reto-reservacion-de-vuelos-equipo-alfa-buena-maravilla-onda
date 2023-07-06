@@ -12,7 +12,7 @@ const LogInScreenStyles = StyleSheet.create({
     marginTop: 30,
   },
   titletext: {
-    transform: [{ rotate: '-30deg' }],
+    transform: [{rotate: '-30deg'}],
     position: 'absolute',
     top: 15,
     right: 126,

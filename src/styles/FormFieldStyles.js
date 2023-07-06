@@ -9,7 +9,7 @@ const FormFieldStyles = StyleSheet.create({
     flexDirection: 'row',
     borderWidth: 2,
     borderRadius: 15,
-    backgroundColor:'rgba(255,255,255,0.5)'
+    backgroundColor: 'rgba(255,255,255,0.5)',
   },
   rowText: {
     marginBottom: 5,
@@ -28,8 +28,8 @@ const FormFieldStyles = StyleSheet.create({
   text: {
     fontSize: 16,
     marginRight: 10,
-    fontWeight:'600',
-    textTransform:'uppercase'
+    fontWeight: '600',
+    textTransform: 'uppercase',
   },
   input: {
     height: 50,

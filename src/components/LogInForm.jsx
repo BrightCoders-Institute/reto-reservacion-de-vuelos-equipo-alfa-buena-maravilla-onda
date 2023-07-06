@@ -5,17 +5,12 @@ import UseFormState from '../hooks/UseFormState';
 import SignUpButton from './SignUpButton';
 import handleLogIn from '../hooks/HandleLogin';
 import SignUpLoginFormStyles from '../styles/SignUpLoginFormStyles';
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 
 const LogInForm = () => {
   const navigation = useNavigation();
   const [logInError, setLogInError] = useState(null);
-  const {
-    email,
-    setEmail,
-    password,
-    setPassword,
-  } = UseFormState();
+  const {email, setEmail, password, setPassword} = UseFormState();
 
   const handleOnLogin = async () => {
     try {
@@ -23,9 +18,8 @@ const LogInForm = () => {
       if (user.hasOwnProperty('typeError')) {
         console.log(user);
         setLogInError(user);
-      }
-      else{
-        navigation.replace('Home')
+      } else {
+        navigation.replace('Home');
       }
     } catch (error) {
       console.error('Error signing up:', error);
@@ -59,12 +53,13 @@ const LogInForm = () => {
       />
 
       <View style={SignUpLoginFormStyles.footerContainer}>
-        <Text style={SignUpLoginFormStyles.text}>You dont have account? {''}</Text>
+        <Text style={SignUpLoginFormStyles.text}>
+          You dont have account? {''}
+        </Text>
         <Pressable onPress={() => navigation.push('SignUp')}>
           <Text style={SignUpLoginFormStyles.logInText}>Sing In</Text>
         </Pressable>
       </View>
-
     </View>
   );
 };

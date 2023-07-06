@@ -1,14 +1,10 @@
 import React from 'react';
-import {
-  View,
-  TouchableOpacity,
-  Text,
-} from 'react-native';
+import {View, TouchableOpacity, Text, Alert} from 'react-native';
 import handleLogOut from '../hooks/HandleLogOut';
 import OnAuthStateChanged from '../hooks/OnAuthStateChanged';
 import HomeScreenStyles from '../styles/HomeScreenStyles';
 import {useNavigation} from '@react-navigation/native';
-import Card from '../components/Card';
+import FlightList from '../components/FlightList';
 import AddButton from '../components/AddButton';
 
 const HomeScreen = () => {
@@ -16,14 +12,12 @@ const HomeScreen = () => {
   const navigation = useNavigation();
 
   const handleOnLogOut = async () => {
-    console.log('handleOnLogOut executed');
+    Alert.alert('Cerraste Sesión');
     try {
-      console.log('Before handleLogOut');
       await handleLogOut();
-      console.log('After handleLogOut');
       navigation.replace('SignUp');
     } catch (error) {
-      console.log('Error:', error);
+      Alert.alert('Error:', error);
     }
   };
 
@@ -38,12 +32,7 @@ const HomeScreen = () => {
         </TouchableOpacity>
       </View>
       <Text style={HomeScreenStyles.title}>My flights</Text>
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
+      <FlightList />
       <AddButton />
     </View>
   );

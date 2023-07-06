@@ -5,7 +5,7 @@ import SignUpScreenStyles from '../styles/SignUpScreenStyles';
 
 const SignUpScreen = () => {
   return (
-    <View  style={SignUpScreenStyles.container} >
+    <View style={SignUpScreenStyles.container}>
       <SignUpForm />
     </View>
   );

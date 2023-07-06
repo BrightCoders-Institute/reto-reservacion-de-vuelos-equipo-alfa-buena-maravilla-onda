@@ -23,12 +23,12 @@ const LoadingModalStyles = StyleSheet.create({
     marginTop: 25,
     color: '#5974f5',
     fontSize: 17,
-  },  
+  },
   checkmarkIcon: {
     marginTop: 10,
   },
   activityIndicator: {
-    transform: [{ scale: 2 }], 
+    transform: [{scale: 2}],
   },
 });
 
