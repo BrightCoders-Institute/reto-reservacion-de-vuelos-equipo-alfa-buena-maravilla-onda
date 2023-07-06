@@ -38,9 +38,9 @@ const SignUpLoginFormStyles = StyleSheet.create({
   textUnderline: {
     textDecorationLine: 'underline',
   },
-  textPass:{
-    marginHorizontal:25,
-  }
+  textPass: {
+    marginHorizontal: 25,
+  },
 });
 
 export default SignUpLoginFormStyles;

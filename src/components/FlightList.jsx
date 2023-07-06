@@ -4,15 +4,15 @@ import Card from './Card';
 import GetFlights from '../hooks/GetFlights';
 
 const FlightList = () => {
-    const [flights, setFlights] = useState([])
-    useEffect(() =>{
-        const getFlightsData = async () => {
-            const getFlights = await GetFlights();
-            setFlights(getFlights);
-        }
-        getFlightsData();
-    },[]);
-   
+  const [flights, setFlights] = useState([]);
+  useEffect(() => {
+    const getFlightsData = async () => {
+      const getFlights = await GetFlights();
+      setFlights(getFlights);
+    };
+    getFlightsData();
+  }, []);
+
   const renderItem = ({item}) => (
     <Card
       date={item.date}
@@ -23,7 +23,7 @@ const FlightList = () => {
       passengers={item.passengers}
     />
   );
-  
+
   return (
     <FlatList
       data={flights}

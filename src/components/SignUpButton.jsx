@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, {useState, useCallback} from 'react';
 import {
   TouchableOpacity,
   Text,
@@ -9,14 +9,18 @@ import {
 import signInWithGoogle from '../hooks/SignInWithGoogle';
 import LoadingModal from './LoadingModal';
 import SignUpButtonStyles from '../styles/SignUpButtonStyles';
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 
-const SignUpButton = ({ isEnabled, onPress,  signUpButtonText, googleSignInButtonText }) => {
+const SignUpButton = ({
+  isEnabled,
+  onPress,
+  signUpButtonText,
+  googleSignInButtonText,
+}) => {
   const navigation = useNavigation();
   const [isLoading, setIsLoading] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
   const [signInCompleted, setSignInCompleted] = useState(false);
-
 
   const handleGoogleSignIn = useCallback(async () => {
     try {
@@ -39,11 +43,12 @@ const SignUpButton = ({ isEnabled, onPress,  signUpButtonText, googleSignInButto
       <TouchableOpacity
         style={[
           SignUpButtonStyles.button,
-          isEnabled ? SignUpButtonStyles.enabledBtn : SignUpButtonStyles.disabledBtn,
+          isEnabled
+            ? SignUpButtonStyles.enabledBtn
+            : SignUpButtonStyles.disabledBtn,
         ]}
         disabled={!isEnabled || isLoading}
-        onPress={onPress}
-      >
+        onPress={onPress}>
         {isLoading ? (
           <ActivityIndicator size="small" color="#fbfbfc" animating={true} />
         ) : (
@@ -55,11 +60,12 @@ const SignUpButton = ({ isEnabled, onPress,  signUpButtonText, googleSignInButto
       <TouchableOpacity
         style={[
           SignUpButtonStyles.button,
-          isEnabled ? SignUpButtonStyles.enabledBtn : SignUpButtonStyles.disabledBtn,
+          isEnabled
+            ? SignUpButtonStyles.enabledBtn
+            : SignUpButtonStyles.disabledBtn,
         ]}
         disabled={!isEnabled || isLoading}
-        onPress={handleGoogleSignIn}
-      >
+        onPress={handleGoogleSignIn}>
         <View style={SignUpButtonStyles.buttonContent}>
           <Image
             source={{
@@ -67,7 +73,9 @@ const SignUpButton = ({ isEnabled, onPress,  signUpButtonText, googleSignInButto
             }}
             style={SignUpButtonStyles.googleLogo}
           />
-          <Text style={SignUpButtonStyles.buttonText}>{googleSignInButtonText}</Text>
+          <Text style={SignUpButtonStyles.buttonText}>
+            {googleSignInButtonText}
+          </Text>
         </View>
       </TouchableOpacity>
 
@@ -75,7 +83,5 @@ const SignUpButton = ({ isEnabled, onPress,  signUpButtonText, googleSignInButto
     </View>
   );
 };
-
-
 
 export default SignUpButton;

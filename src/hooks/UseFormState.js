@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import {useState, useEffect} from 'react';
 
 const UseFormState = () => {
   const [firstName, setFirstName] = useState('');
@@ -7,7 +7,6 @@ const UseFormState = () => {
   const [termsChecked, setTermsChecked] = useState(false);
   const [subscribeChecked, setSubscribeChecked] = useState(false);
   const [isButtonEnabled, setButtonEnabled] = useState(false);
-  
 
   const checkButtonEnabled = () => {
     if (termsChecked && subscribeChecked) {
@@ -35,7 +34,6 @@ const UseFormState = () => {
     isButtonEnabled,
     setButtonEnabled,
   };
-  
 };
 
 export default UseFormState;
