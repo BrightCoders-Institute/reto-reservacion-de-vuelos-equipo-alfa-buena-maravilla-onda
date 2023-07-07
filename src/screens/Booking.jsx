@@ -5,7 +5,7 @@ import BookingInput from '../components/BookingInput';
 import BookingHeaderText from '../components/BookingHeaderText';
 import NextButton from '../components/NextButton';
 import BookingStyles from '../styles/BookingStyles';
-import BookingCalendar from '../components/BookingCalendar';
+import DatePickerCalendar from '../components/DatePickerCalendar';
 
 const Booking = () => {
     const [date,setDate]=useState(new Date())
@@ -19,7 +19,7 @@ const Booking = () => {
       <Card/>
       <BookingHeaderText text='Where are you now?'/> 
       <BookingInput />
-      <BookingCalendar/>
+      <DatePickerCalendar/>
       
       <View style={BookingStyles.buttonContainer}>
         <NextButton/>  
@@ -29,4 +29,4 @@ const Booking = () => {
   )
 }
 
-export default Booking
+export default Booking;
