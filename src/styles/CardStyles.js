@@ -10,8 +10,6 @@ const CardStyles = StyleSheet.create({
     alignSelf: 'center',
     justifyContent: 'space-between',
     marginTop: 8,
-    borderBottomColor: 'gray',
-    borderBottomWidth: 2,
   },
   infOne: {
     width: '40%',
@@ -54,6 +52,12 @@ const CardStyles = StyleSheet.create({
     marginTop: 10,
     alignItems: 'center',
   },
+  containerWithLine:{
+    width:'90%',
+    alignSelf:'center',
+    borderBottomColor: 'gray',
+    borderBottomWidth: 2,
+  }
 });
 
 export default CardStyles;

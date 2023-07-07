@@ -1,0 +1,25 @@
+{
+    "aeropuertos": [
+      { "ciudad": "Belgrado", "abreviacion": "BEG", "pais": "Serbia" },
+      { "ciudad": "Berlín", "abreviacion": "BER", "pais": "Alemania" },
+      { "ciudad": "Londres", "abreviacion": "LON", "pais": "Reino Unido" },
+      { "ciudad": "París", "abreviacion": "PAR", "pais": "Francia" },
+      { "ciudad": "Madrid", "abreviacion": "MAD", "pais": "España" },
+      { "ciudad": "Roma", "abreviacion": "ROM", "pais": "Italia" },
+      { "ciudad": "Ámsterdam", "abreviacion": "AMS", "pais": "Países Bajos" },
+      { "ciudad": "Atenas", "abreviacion": "ATH", "pais": "Grecia" },
+      { "ciudad": "Bangkok", "abreviacion": "BKK", "pais": "Tailandia" },
+      { "ciudad": "Pekín", "abreviacion": "PEK", "pais": "China" },
+      { "ciudad": "Tokio", "abreviacion": "TYO", "pais": "Japón" },
+      { "ciudad": "Sídney", "abreviacion": "SYD", "pais": "Australia" },
+      { "ciudad": "Nueva York", "abreviacion": "NYC", "pais": "Estados Unidos" },
+      { "ciudad": "Ciudad de México", "abreviacion": "MEX", "pais": "México" },
+      { "ciudad": "Buenos Aires", "abreviacion": "BUE", "pais": "Argentina" },
+      { "ciudad": "Río de Janeiro", "abreviacion": "RIO", "pais": "Brasil" },
+      { "ciudad": "Johannesburgo", "abreviacion": "JNB", "pais": "Sudáfrica" },
+      { "ciudad": "El Cairo", "abreviacion": "CAI", "pais": "Egipto" },
+      { "ciudad": "Moscú", "abreviacion": "MOW", "pais": "Rusia" },
+      { "ciudad": "Dubái", "abreviacion": "DXB", "pais": "Emiratos Árabes Unidos" }
+    ]
+  }
+  

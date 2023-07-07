@@ -1,7 +1,8 @@
 import React, {useEffect, useState} from 'react';
-import {FlatList} from 'react-native';
+import {FlatList, View} from 'react-native';
 import Card from './Card';
 import GetFlights from '../hooks/GetFlights';
+import CardStyles from '../styles/CardStyles';
 
 const FlightList = () => {
   const [flights, setFlights] = useState([]);
@@ -14,14 +15,17 @@ const FlightList = () => {
   }, []);
 
   const renderItem = ({item}) => (
-    <Card
-      date={item.date}
-      destinationCity={item.destinationCity}
-      destinationCountry={item.destinationCountry}
-      originCity={item.originCity}
-      originCountry={item.originCountry}
-      passengers={item.passengers}
-    />
+    <View >
+      <Card
+        date={item.date}
+        destinationCity={item.destinationCity}
+        destinationCountry={item.destinationCountry}
+        originCity={item.originCity}
+        originCountry={item.originCountry}
+        passengers={item.passengers}
+        />
+      <View style={CardStyles.containerWithLine}></View>
+    </View>   
   );
 
   return (
