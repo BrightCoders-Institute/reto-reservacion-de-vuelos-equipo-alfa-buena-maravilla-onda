@@ -11,7 +11,7 @@ const Stack = createStackNavigator();
 const AppNavigation = () => {
   return (
     <Stack.Navigator
-      initialRouteName="Home"
+      initialRouteName="Booking"
       screenOptions={{headerShown: false, headerLeft:() => (<BackHeaderButton/>)}}>
       <Stack.Screen name="SignUp" component={SignUpScreen} />
       <Stack.Screen name="Home" component={HomeScreen} />

@@ -6,6 +6,7 @@ import BookingHeaderText from '../components/BookingHeaderText';
 import NextButton from '../components/NextButton';
 import BookingStyles from '../styles/BookingStyles';
 import DatePickerCalendar from '../components/DatePickerCalendar';
+import PassengerPicker from '../components/PassengerPicker';
 
 const Booking = () => {
     const [date,setDate]=useState(new Date())
@@ -17,13 +18,12 @@ const Booking = () => {
   return (
     <View style= {BookingStyles.screenContainer}>
       <Card/>
-      <BookingHeaderText text='Where are you now?'/> 
-      <BookingInput />
-      <DatePickerCalendar/>
-      
+      <BookingHeaderText text='How many passengers?'/> 
+      {/* <BookingInput /> */}
+      {/* <DatePickerCalendar/> */}
+      <PassengerPicker/>
       <View style={BookingStyles.buttonContainer}>
         <NextButton/>  
-        
       </View>
     </View>
   )
