@@ -1,10 +1,13 @@
 import React from 'react';
 import {TouchableOpacity, StyleSheet} from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import { useNavigation } from '@react-navigation/native';
 
 const AddButton = () => {
+  const navigation = useNavigation();
   return (
-    <TouchableOpacity style={styles.button}>
+    <TouchableOpacity style={styles.button}
+      onPress={() => navigation.push('Booking')}>
       <FontAwesome name="plus" size={50} color="#fff" />
     </TouchableOpacity>
   );
