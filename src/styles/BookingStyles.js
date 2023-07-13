@@ -7,10 +7,15 @@ const BookingStyles = StyleSheet.create({
   },
   buttonContainer: {
     width: '100%',
-    marginTop:'75%',
+    marginTop:'65%',
+    marginBottom: '10%',
     alignItems: 'center',
     justifyContent: 'center',
-  }
+  },
+  headerButton:{
+    marginTop:5,
+    marginRight:'88%'
+  },
 });
 
 export default BookingStyles;
