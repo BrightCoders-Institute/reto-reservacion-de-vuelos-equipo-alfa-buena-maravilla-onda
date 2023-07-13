@@ -1,14 +1,15 @@
 import React from 'react';
-import {View, StyleSheet } from 'react-native';
+import { View } from 'react-native';
 import DatePicker from 'react-native-modern-datepicker';
 import moment from 'moment';
+import DatePickerCalendarStyles from '../styles/DatePickerCalendarStyles';
 
-const DatePickerCalendar = ({handleChange, date}) => {
+const DatePickerCalendar = ({ handleChange, date }) => {
   const today = new Date();
   today.setDate(today.getDate() + 1);
   const startDate = moment(today).format('YYYY-MM-DD');
   return (
-    <View style={styles.modalView}>
+    <View style={DatePickerCalendarStyles.modalView}>
       <DatePicker
         options={{
           mainColor: '#6172F6',
@@ -24,14 +25,5 @@ const DatePickerCalendar = ({handleChange, date}) => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  modalView: {
-    height: '20%',
-    padding: 10,
-    alignItems: 'center',
-    shadowColor: '#000',
-  },
-});
 
 export default DatePickerCalendar;

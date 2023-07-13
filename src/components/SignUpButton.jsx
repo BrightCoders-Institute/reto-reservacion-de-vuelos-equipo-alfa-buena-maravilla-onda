@@ -45,7 +45,7 @@ const SignUpButton = ({
           SignUpButtonStyles.button,
           isEnabled
             ? SignUpButtonStyles.enabledBtn
-            : SignUpButtonStyles.disabledBtn,
+            : SignUpButtonStyles.disabledBtn, b
         ]}
         disabled={!isEnabled || isLoading}
         onPress={onPress}>

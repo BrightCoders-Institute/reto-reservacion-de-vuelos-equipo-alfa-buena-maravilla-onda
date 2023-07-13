@@ -26,10 +26,10 @@ const Booking = () => {
   const [destinationCountry, setDestinationCountry] = useState('');
   const [originCity, setOriginCity] = useState('');
   const [originCountry, setOriginCountry] = useState('');
-  const [passengers, setPassengers] = useState(1);
+  const [passengers, setPassengers] = useState(0);
   const [buttonStatus, setButtonStatus] = useState(false);
   const [error, setError] = useState(false);
-  
+
   function handleDateChange(propDate) {
     const isoDate = moment(propDate, 'YYYY/MM/DD').format('YYYY-MM-DD');
     const formattedDate = moment(isoDate).format('MMMM D, YYYY');
@@ -39,19 +39,19 @@ const Booking = () => {
 
   const handleNext = () => {
     setError(false);
-    switch(indice){
+    switch (indice) {
       case 0:
-        originCity === '' ? setError(true) :  Nextclick();
+        originCity === '' ? setError(true) : Nextclick();
         break;
       case 1:
-        destinationCity === '' ? setError(true) :  Nextclick();
+        destinationCity === '' ? setError(true) : Nextclick();
         break;
       case 2:
-        date === '' ? setError(true) :  Nextclick();
+        date === '' ? setError(true) : Nextclick();
         break;
     }
-  }
-  
+  };
+
   return (
     <View style={BookingStyles.screenContainer}>
       <View style={BookingStyles.headerButton}>
@@ -66,7 +66,7 @@ const Booking = () => {
         originCountry={originCountry}
         passengers={passengers}
       />
-      {error ? <TextAlert texto='El campo no puede estar vacio'/> : null}
+      {error ? <TextAlert texto="El campo no puede estar vacio" /> : null}
       <BookingHeaderText text={Textitle()} />
       {indice === 0 ? (
         <BookingInput value={originCity} onChangeText={setOriginCity} />
@@ -77,14 +77,15 @@ const Booking = () => {
           onChangeText={setDestinationCity}
         />
       ) : null}
-      {indice === 2 ? <DatePickerCalendar date={date} handleChange={handleDateChange}/> : null}
+      {indice === 2 ? (
+        <DatePickerCalendar date={date} handleChange={handleDateChange} />
+      ) : null}
       {indice === 3 ? (
-        <PassengerPicker setSelectItem={setPassengers} value={passengers} />
+         <PassengerPicker setSelectItem={setPassengers} value={passengers} />
       ) : null}
       <View style={BookingStyles.buttonContainer}>
         <NextButton nextClick={handleNext} disabled={buttonStatus} />
       </View>
-      
     </View>
   );
 };
