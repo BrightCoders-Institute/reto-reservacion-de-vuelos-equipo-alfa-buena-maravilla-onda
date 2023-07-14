@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {View} from 'react-native';
+import {View, Alert} from 'react-native';
 import Card from '../components/Card';
 import BookingInput from '../components/BookingInput';
 import BookingHeaderText from '../components/BookingHeaderText';
