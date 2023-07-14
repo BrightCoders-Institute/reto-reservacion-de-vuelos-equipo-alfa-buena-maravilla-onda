@@ -1,22 +1,23 @@
 import React, {useState} from 'react';
-
+import {useNavigation} from '@react-navigation/native';
+import { addFlightToFirestore } from '../hooks/SetFlights';
 const BookingRegister = () => {
   const [indice, setIndice] = useState(0);
+  const navigation = useNavigation();
 
   const Nextclick = () => {
     setIndice(indice + 1);
   };
   const PreviousClick = () => {
-    setIndice(indice - 1);
-  };
-  const handleInputChange=(text)=> {
-    if (text.length === 0){
-      return true;
+    if (indice - 1 === -1 ){
+      navigation.goBack();
     }
     else{
-      return false;
+      setIndice(indice - 1);
     }
-  }
+  };
+
+  
   const Textitle = () => {
     switch (indice) {
       case 0:
@@ -34,13 +35,17 @@ const BookingRegister = () => {
     }
   };
 
+  const TexBtn = () => {
+    return indice === 4 ? 'Go flight!' : 'Next';
+  };
+  
   return {
     indice,
     setIndice,
     Nextclick,
     Textitle,
     PreviousClick,
-    handleInputChange,
+    TexBtn,
   };
 };
 export default BookingRegister;

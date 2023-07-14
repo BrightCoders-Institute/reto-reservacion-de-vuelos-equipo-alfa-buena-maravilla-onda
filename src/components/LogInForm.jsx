@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View, Pressable, Text} from 'react-native';
+import {View, Pressable, Text,Alert} from 'react-native';
 import FormField from './FormField';
 import UseFormState from '../hooks/UseFormState';
 import SignUpButton from './SignUpButton';
@@ -16,13 +16,12 @@ const LogInForm = () => {
     try {
       const user = await handleLogIn(email, password);
       if (user.hasOwnProperty('typeError')) {
-        console.log(user);
         setLogInError(user);
       } else {
         navigation.replace('Home');
       }
     } catch (error) {
-      console.error('Error signing up:', error);
+      Alert.alert('Error','Error signing up:');
     }
   };
 

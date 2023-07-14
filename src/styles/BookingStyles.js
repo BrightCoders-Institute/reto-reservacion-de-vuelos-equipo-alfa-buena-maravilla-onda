@@ -16,6 +16,9 @@ const BookingStyles = StyleSheet.create({
     marginTop:5,
     marginRight:'88%'
   },
+  alertStyle:{
+    marginLeft:20
+  },
 });
 
 export default BookingStyles;
