@@ -13,10 +13,10 @@ const BookingInput = ({onChangeText, value}) => {
     pais: item.pais,
   }));
 
-  const handleSelect = (item) => {
+  const handleSelect = item => {
     setSelectedItem(item);
-    onChangeText(item);  
-  }
+    onChangeText(item);
+  };
   return (
     <View style={BookingInputStyles.container}>
       <AutocompleteDropdown
@@ -25,13 +25,11 @@ const BookingInput = ({onChangeText, value}) => {
         closeOnSubmit={false}
         onSelectItem={handleSelect}
         dataSet={data}
-        textInputProps={
-          {
-            placeholder:'Select location',
-            style:{backgroundColor:'#FFFFFF'}
-          }
-        }
-        rightButtonsContainerStyle={{backgroundColor:'#FFFFFF'}}
+        textInputProps={{
+          placeholder: 'Select location',
+          style: {backgroundColor: '#FFFFFF'},
+        }}
+        rightButtonsContainerStyle={{backgroundColor: '#FFFFFF'}}
       />
     </View>
   );

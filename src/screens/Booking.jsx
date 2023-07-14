@@ -1,28 +1,23 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {View} from 'react-native';
 import Card from '../components/Card';
 import BookingInput from '../components/BookingInput';
 import BookingHeaderText from '../components/BookingHeaderText';
 import NextButton from '../components/NextButton';
 import BookingStyles from '../styles/BookingStyles';
+import NextButtonStyles from '../styles/NextButtonStyles';
 import DatePickerCalendar from '../components/DatePickerCalendar';
 import PassengerPicker from '../components/PassengerPicker';
 import BookingRegister from '../hooks/BookingRegister';
 import BackHeaderButton from '../components/BackHeaderButton';
 import TextAlert from '../components/TextAlert';
 import moment from 'moment';
-import { addFlightToFirestore } from '../hooks/SetFlights';
-
+import {addFlightToFirestore} from '../hooks/SetFlights';
+import ValidateInputs from '../hooks/ValidateInputs';
 
 const Booking = ({navigation}) => {
-  const {
-    indice,
-    setIndice,
-    Nextclick,
-    Textitle,
-    PreviousClick,
-    TexBtn,
-  } = BookingRegister();
+  const {indice, setIndice, Nextclick, Textitle, PreviousClick, TexBtn} =
+    BookingRegister();
   const [date, setDate] = useState('');
   const [destinationCity, setDestinationCity] = useState('');
   const [destinationCountry, setDestinationCountry] = useState('');
@@ -30,6 +25,7 @@ const Booking = ({navigation}) => {
   const [originCountry, setOriginCountry] = useState('');
   const [passengers, setPassengers] = useState(0);
   const [error, setError] = useState(false);
+  const [isButtonDisabled, setIsButtonDisabled] = useState(false);
 
   function handleDateChange(propDate) {
     const isoDate = moment(propDate, 'YYYY/MM/DD').format('YYYY-MM-DD');
@@ -37,36 +33,44 @@ const Booking = ({navigation}) => {
     setDate(formattedDate);
   }
 
-  const dateRegex = /^(?:January|February|March|April|May|June|July|August|September|October|November|December)\s\d{1,2},\s\d{4}$/;
-
-  const setOriginData = (item) => {
-    if (item !== null){
+  const setOriginData = item => {
+    if (item !== null) {
       setOriginCity(item.abreviacion);
       setOriginCountry(item.pais);
     }
-  }
+  };
 
-  const setDestinationData = (item) => {
-    if (item !== null){
+  const setDestinationData = item => {
+    if (item !== null) {
       setDestinationCity(item.abreviacion);
       setDestinationCountry(item.pais);
     }
-  }
+  };
 
   const handleNext = async () => {
-    setError(false);
+    let input;
     switch (indice) {
       case 0:
-        originCity === '' || originCity === null ? setError(true) : Nextclick();
+        input = originCity;
         break;
       case 1:
-        destinationCity === '' ? setError(true) : Nextclick();
+        input = destinationCity;
         break;
       case 2:
-        !dateRegex.test(date) ? setError(true) : Nextclick();
+        input = date;
         break;
-      case 4:
-        try{
+      default:
+        input = '';
+        break;
+    }
+    const [hasError, errorMessage] = ValidateInputs(input, indice);
+    setError(hasError);
+    if (hasError) {
+      Alert.alert(errorMessage);
+      setIsButtonDisabled(true);
+    } else {
+      if (indice === 4) {
+        try {
           await addFlightToFirestore({
             date,
             destinationCity,
@@ -74,28 +78,50 @@ const Booking = ({navigation}) => {
             originCity,
             originCountry,
             passengers,
-        });
-        Nextclick();
-        }catch(error){
+          });
+          Nextclick();
+          setIsButtonDisabled(false);
+        } catch (error) {
           console.error(error);
-          Alert.alert('Error while creating the reservation',
-          'We could not save your reservation, try it later.', 
-          [
-            {
-              text: 'Go home',
-              onPress: () => navigation.push('Home'),
-            }
-          ])
-        }
-        finally{
+          Alert.alert(
+            'Error while creating the reservation',
+            'We could not save your reservation, try it later.',
+            [
+              {
+                text: 'Go home',
+                onPress: () => navigation.push('Home'),
+              },
+            ],
+          );
+        } finally {
           navigation.push('Home');
         }
-        break;
-      default:
-          Nextclick();
-      break;
+      } else {
+        Nextclick();
+        setIsButtonDisabled(false);
+      }
     }
   };
+
+  useEffect(() => {
+    let input;
+    switch (indice) {
+      case 0:
+        input = originCity;
+        break;
+      case 1:
+        input = destinationCity;
+        break;
+      case 2:
+        input = date;
+        break;
+      default:
+        input = '';
+        break;
+    }
+    const [hasError, errorMessage] = ValidateInputs(input, indice);
+    setIsButtonDisabled(hasError);
+  }, [originCity, destinationCity, date, indice]);
 
   return (
     <View style={BookingStyles.screenContainer}>
@@ -110,7 +136,11 @@ const Booking = ({navigation}) => {
         originCountry={originCountry}
         passengers={passengers}
       />
-      {error ? <View style={BookingStyles.alertStyle}><TextAlert texto="El campo no puede estar vacio" /></View> : null}
+      {error ? (
+        <View style={BookingStyles.alertStyle}>
+          <TextAlert texto="El campo no puede estar vacio" />
+        </View>
+      ) : null}
       <BookingHeaderText text={Textitle()} />
       {indice === 0 ? (
         <BookingInput value={originCity} onChangeText={setOriginData} />
@@ -125,10 +155,18 @@ const Booking = ({navigation}) => {
         <DatePickerCalendar date={date} handleChange={handleDateChange} />
       ) : null}
       {indice === 3 ? (
-         <PassengerPicker setSelectItem={setPassengers} value={passengers} />
+        <PassengerPicker setSelectItem={setPassengers} value={passengers} />
       ) : null}
       <View style={BookingStyles.buttonContainer}>
-        <NextButton nextClick={handleNext} text={TexBtn()} />
+        <NextButton
+          nextClick={handleNext}
+          text={TexBtn()}
+          style={
+            isButtonDisabled
+              ? NextButtonStyles.disabledBtn
+              : NextButtonStyles.enabledBtn
+          }
+        />
       </View>
     </View>
   );

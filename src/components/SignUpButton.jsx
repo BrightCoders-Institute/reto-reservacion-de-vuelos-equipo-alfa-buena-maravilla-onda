@@ -5,7 +5,7 @@ import {
   View,
   ActivityIndicator,
   Image,
-  Alert
+  Alert,
 } from 'react-native';
 import signInWithGoogle from '../hooks/SignInWithGoogle';
 import LoadingModal from './LoadingModal';
@@ -33,7 +33,7 @@ const SignUpButton = ({
       setModalVisible(false);
       navigation.replace('Home');
     } catch (error) {
-      Alert.alert('Error','Failed to Log in with google account');
+      Alert.alert('Error', 'Failed to Log in with google account');
       setIsLoading(false);
       setModalVisible(false);
     }
@@ -46,7 +46,7 @@ const SignUpButton = ({
           SignUpButtonStyles.button,
           isEnabled
             ? SignUpButtonStyles.enabledBtn
-            : SignUpButtonStyles.disabledBtn, b
+            : SignUpButtonStyles.disabledBtn,
         ]}
         disabled={!isEnabled || isLoading}
         onPress={onPress}>

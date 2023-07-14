@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View, Pressable, Text,Alert} from 'react-native';
+import {View, Pressable, Text, Alert} from 'react-native';
 import FormField from './FormField';
 import UseFormState from '../hooks/UseFormState';
 import SignUpButton from './SignUpButton';
@@ -21,7 +21,7 @@ const LogInForm = () => {
         navigation.replace('Home');
       }
     } catch (error) {
-      Alert.alert('Error','Error signing up:');
+      Alert.alert('Error', 'Error signing up:');
     }
   };
 

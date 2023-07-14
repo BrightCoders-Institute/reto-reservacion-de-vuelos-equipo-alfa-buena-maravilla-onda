@@ -1,10 +1,10 @@
 import React from 'react';
-import { View } from 'react-native';
+import {View} from 'react-native';
 import DatePicker from 'react-native-modern-datepicker';
 import moment from 'moment';
 import DatePickerCalendarStyles from '../styles/DatePickerCalendarStyles';
 
-const DatePickerCalendar = ({ handleChange, date }) => {
+const DatePickerCalendar = ({handleChange, date}) => {
   const today = new Date();
   today.setDate(today.getDate() + 1);
   const startDate = moment(today).format('YYYY-MM-DD');
