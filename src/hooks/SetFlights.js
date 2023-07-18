@@ -12,7 +12,6 @@ const addFlightToFirestore = async flightData => {
       });
     }
   } catch (error) {
-    console.error('Error al agregar los valores a Firestore:', error);
   }
 };
 

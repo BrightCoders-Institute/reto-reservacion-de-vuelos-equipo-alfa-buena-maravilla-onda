@@ -1,8 +1,9 @@
 import {StyleSheet} from 'react-native';
+import {primaryBlue} from './colors';
 
 const AddButtonStyles = StyleSheet.create({
   button: {
-    backgroundColor: '#5974f5',
+    backgroundColor: primaryBlue,
     height: 90,
     width: 90,
     position: 'absolute',

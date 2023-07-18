@@ -1,9 +1,10 @@
 import {StyleSheet} from 'react-native';
+import {whiteColor} from './colors';
 
 const BookingStyles = StyleSheet.create({
   screenContainer: {
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: whiteColor,
   },
   buttonContainer: {
     width: '100%',

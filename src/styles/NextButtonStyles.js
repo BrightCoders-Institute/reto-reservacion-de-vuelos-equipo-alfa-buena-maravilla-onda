@@ -1,28 +1,30 @@
 import {StyleSheet} from 'react-native';
+import {blueShadow, grayColor, primaryBlue, whiteColor} from './colors';
+
 const NextButtonStyles = StyleSheet.create({
   button: {
-    backgroundColor: '#5974f5',
-    paddingVertical: 11,
-    paddingHorizontal: 10,
-    width: '90%',
+    backgroundColor: primaryBlue,
     borderRadius: 8,
     elevation: 7,
-    shadowColor: '#0000ff',
+    paddingHorizontal: 10,
+    paddingVertical: 11,
+    shadowColor: blueShadow,
     shadowOffset: {width: 0, height: 2},
     shadowOpacity: 0.3,
     shadowRadius: 2,
-  },
-  enabledBtn: {
-    backgroundColor: '#5974f5',
-  },
-  disabledBtn: {
-    backgroundColor: '#9e9e9e',
+    width: '90%',
   },
   buttonText: {
-    color: '#fbfbfc',
-    textAlign: 'center',
+    color: whiteColor,
     fontSize: 19,
     fontWeight: 'bold',
+    textAlign: 'center',
+  },
+  disabledBtn: {
+    backgroundColor: grayColor,
+  },
+  enabledBtn: {
+    backgroundColor: primaryBlue,
   },
 });
 

@@ -1,8 +1,9 @@
 import React, {useState} from 'react';
-import {View, TextInput} from 'react-native';
+import {View} from 'react-native';
 import BookingInputStyles from '../styles/BookingInputStyles';
 import {AutocompleteDropdown} from 'react-native-autocomplete-dropdown';
 import flightsData from '../data/Flights.json';
+import {whiteColor} from '../styles/colors';
 
 const BookingInput = ({onChangeText, value}) => {
   const [selectedItem, setSelectedItem] = useState(null);
@@ -27,9 +28,9 @@ const BookingInput = ({onChangeText, value}) => {
         dataSet={data}
         textInputProps={{
           placeholder: 'Select location',
-          style: {backgroundColor: '#FFFFFF'},
+          style: {backgroundColor: whiteColor},
         }}
-        rightButtonsContainerStyle={{backgroundColor: '#FFFFFF'}}
+        rightButtonsContainerStyle={{backgroundColor: whiteColor}}
       />
     </View>
   );

@@ -1,10 +1,11 @@
 import {StyleSheet} from 'react-native';
+import {lightGray} from './colors';
 
 const BookingInputStyles = StyleSheet.create({
   container: {
     marginTop: 90,
     marginLeft: 21,
-    borderBottomColor: '#bcbcbc',
+    borderBottomColor: lightGray,
     borderBottomWidth: 1,
   },
 });

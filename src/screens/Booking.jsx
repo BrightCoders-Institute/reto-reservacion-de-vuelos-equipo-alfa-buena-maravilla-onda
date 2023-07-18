@@ -82,7 +82,6 @@ const Booking = ({navigation}) => {
           Nextclick();
           setIsButtonDisabled(false);
         } catch (error) {
-          console.error(error);
           Alert.alert(
             'Error while creating the reservation',
             'We could not save your reservation, try it later.',

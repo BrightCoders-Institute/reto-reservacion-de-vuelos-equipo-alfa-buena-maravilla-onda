@@ -3,6 +3,7 @@ import {View} from 'react-native';
 import DatePicker from 'react-native-modern-datepicker';
 import moment from 'moment';
 import DatePickerCalendarStyles from '../styles/DatePickerCalendarStyles';
+import {primaryBlue, whiteColor} from '../styles/colors';
 
 const DatePickerCalendar = ({handleChange, date}) => {
   const today = new Date();
@@ -12,10 +13,10 @@ const DatePickerCalendar = ({handleChange, date}) => {
     <View style={DatePickerCalendarStyles.modalView}>
       <DatePicker
         options={{
-          mainColor: '#6172F6',
+          mainColor:primaryBlue,
           textFontSize: 17,
           textHeaderFontSize: 20,
-          selectedTextColor: '#fff',
+          selectedTextColor: whiteColor,
         }}
         mode="calendar"
         minimumDate={startDate}
