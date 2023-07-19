@@ -1,11 +1,11 @@
-import { StyleSheet } from 'react-native';
+import {StyleSheet} from 'react-native';
 
 const BackHeaderButtonStyles = StyleSheet.create({
-  container:{
-    marginLeft:10,
+  container: {
+    marginLeft: 10,
   },
-  icon:{
-    transform:[{scaleX:-1}]
+  icon: {
+    transform: [{scaleX: -1}],
   },
 });
 

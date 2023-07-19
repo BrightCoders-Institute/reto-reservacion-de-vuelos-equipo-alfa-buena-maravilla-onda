@@ -5,6 +5,7 @@ import {
   View,
   ActivityIndicator,
   Image,
+  Alert,
 } from 'react-native';
 import signInWithGoogle from '../hooks/SignInWithGoogle';
 import LoadingModal from './LoadingModal';
@@ -32,7 +33,7 @@ const SignUpButton = ({
       setModalVisible(false);
       navigation.replace('Home');
     } catch (error) {
-      console.error('Error al iniciar sesión con Google:', error);
+      Alert.alert('Error', 'Failed to Log in with google account');
       setIsLoading(false);
       setModalVisible(false);
     }

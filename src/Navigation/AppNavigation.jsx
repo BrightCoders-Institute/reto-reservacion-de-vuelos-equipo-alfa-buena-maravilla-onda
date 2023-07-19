@@ -11,12 +11,12 @@ const Stack = createStackNavigator();
 const AppNavigation = () => {
   return (
     <Stack.Navigator
-      initialRouteName="Booking"
-      screenOptions={{headerShown: false, headerLeft:() => (<BackHeaderButton/>)}}>
+      initialRouteName="SignUp"
+      screenOptions={{headerShown: false}}>
       <Stack.Screen name="SignUp" component={SignUpScreen} />
       <Stack.Screen name="Home" component={HomeScreen} />
       <Stack.Screen name="LogIn" component={LogInScreen} />
-      <Stack.Screen name="Booking" component = {Booking} options={{headerShown: true, title:''}} />
+      <Stack.Screen name="Booking" component={Booking} />
     </Stack.Navigator>
   );
 };

@@ -15,7 +15,7 @@ const FlightList = () => {
   }, []);
 
   const renderItem = ({item}) => (
-    <View >
+    <View>
       <Card
         date={item.date}
         destinationCity={item.destinationCity}
@@ -23,9 +23,9 @@ const FlightList = () => {
         originCity={item.originCity}
         originCountry={item.originCountry}
         passengers={item.passengers}
-        />
+      />
       <View style={CardStyles.containerWithLine}></View>
-    </View>   
+    </View>
   );
 
   return (

@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View, Pressable, Text} from 'react-native';
+import {View, Pressable, Text, Alert} from 'react-native';
 import FormField from './FormField';
 import UseFormState from '../hooks/UseFormState';
 import SignUpButton from './SignUpButton';
@@ -13,16 +13,11 @@ const LogInForm = () => {
   const {email, setEmail, password, setPassword} = UseFormState();
 
   const handleOnLogin = async () => {
-    try {
-      const user = await handleLogIn(email, password);
-      if (user.hasOwnProperty('typeError')) {
-        console.log(user);
-        setLogInError(user);
-      } else {
-        navigation.replace('Home');
-      }
-    } catch (error) {
-      console.error('Error signing up:', error);
+    const userOrError = await handleLogIn(email, password);
+    if (userOrError.hasOwnProperty('typeError')) {
+      setLogInError(userOrError);
+    } else {
+      navigation.replace('Home');
     }
   };
 
@@ -33,7 +28,7 @@ const LogInForm = () => {
         typeField="email"
         value={email}
         onChangeText={setEmail}
-        error={null}
+        error={logInError}
       />
 
       <FormField
@@ -42,7 +37,7 @@ const LogInForm = () => {
         typeField="password"
         value={password}
         onChangeText={setPassword}
-        error={null}
+        error={logInError}
       />
 
       <SignUpButton
@@ -57,7 +52,7 @@ const LogInForm = () => {
           You dont have account? {''}
         </Text>
         <Pressable onPress={() => navigation.push('SignUp')}>
-          <Text style={SignUpLoginFormStyles.logInText}>Sing In</Text>
+          <Text style={SignUpLoginFormStyles.logInText}>Sign In</Text>
         </Pressable>
       </View>
     </View>

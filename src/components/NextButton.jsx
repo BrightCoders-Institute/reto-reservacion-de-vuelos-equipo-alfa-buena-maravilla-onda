@@ -1,14 +1,14 @@
 import React from 'react';
-import { TouchableOpacity, Text } from 'react-native';
+import {TouchableOpacity, Text} from 'react-native';
 import NextButtonStyles from '../styles/NextButtonStyles';
 
-const NextButton = () => {
+const NextButton = ({nextClick, text, style}) => {
   return (
-
-    <TouchableOpacity style={NextButtonStyles.button}>
-      <Text style={NextButtonStyles.buttonText}>Next</Text>
+    <TouchableOpacity
+      style={[NextButtonStyles.button, style]}
+      onPress={() => nextClick()}>
+      <Text style={NextButtonStyles.buttonText}>{text}</Text>
     </TouchableOpacity>
-    
   );
 };
 
